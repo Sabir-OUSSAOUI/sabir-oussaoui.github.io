@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications - Sabir Oussaoui</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<script>try{if((localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark")document.documentElement.classList.add("dark")}catch(e){}</script>
+</head>
+<body data-page="pubs">
+<div class="transition" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="nav" id="header"></header>
+
+<main class="wrap">
+  <section style="padding-top:48px">
+    <h1 class="title" id="pubTitle"></h1>
+    <p id="pubLede" style="text-align:center;max-width:720px;margin:-32px auto 56px;font-weight:500;color:var(--muted)"></p>
+    <div class="feat-pubs cols3" id="featPubs"></div>
+    <div class="filters" id="filters"></div>
+    <p class="mono" id="pubCount" style="margin:0 0 4px"></p>
+    <ul class="pub-list" id="pubList"></ul>
+    <div class="rule"></div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:28px;align-items:center">
+      <a class="btn ghost" href="https://scholar.google.com/citations?user=mRgV_v4AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+      <a class="btn ghost" href="https://www.researchgate.net/profile/Sabir-Oussaoui" target="_blank" rel="noopener">ResearchGate ↗</a>
+      <span class="mono" style="font-size:11px">No metrics are computed on this page.</span>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <h2 class="title" id="talksTitle" style="font-size:40px"></h2>
+    <ul class="talks" id="talks"></ul>
+    <div class="rule"></div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lbCap">
+  <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%">
+    <div class="lb-stage"><button class="lb-nav" id="lbPrev" aria-label="Previous image">&#8249;</button><img id="lbImg" src="" alt=""><button class="lb-nav" id="lbNext" aria-label="Next image">&#8250;</button></div>
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="btn" id="lbClose">Close</button>
+</div>
+
+<footer id="footer"></footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

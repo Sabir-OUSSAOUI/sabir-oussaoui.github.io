@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About - Sabir Oussaoui</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<script>try{if((localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))==="dark")document.documentElement.classList.add("dark")}catch(e){}</script>
+</head>
+<body data-page="about">
+<div class="transition" aria-hidden="true"><span></span><span></span><span></span></div>
+<header class="nav" id="header"></header>
+
+<main class="wrap">
+  <section style="padding-top:48px">
+    <h1 class="title" id="aboutTitle"></h1>
+    <div class="about-grid">
+      <div class="bio reveal"><h3 id="bioHead"></h3><div id="bio"></div></div>
+      <div class="frame reveal"><img src="images/profile/portrait-about.png" alt="Portrait of Sabir Oussaoui" width="1200" height="1500"></div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="title" id="skillsTitle"></h2>
+    <div class="skills" id="skills" role="img" aria-label="Circular map of satellites, data products, software and methods used in the thesis"></div>
+    <div class="legend" id="legend"></div>
+    <p class="mono" id="skillsNote" style="text-align:center;margin-top:12px;font-size:11px"></p>
+  </section>
+
+  <section>
+    <h2 class="title" id="expTitle"></h2>
+    <div class="timeline"><div class="rail"><i></i></div><ul id="expList"></ul></div>
+  </section>
+
+  <section>
+    <h2 class="title" id="eduTitle"></h2>
+    <div class="timeline"><div class="rail"><i></i></div><ul id="eduList"></ul></div>
+  </section>
+
+  <section>
+    <h2 class="title" id="supTitle" style="font-size:40px"></h2>
+    <div class="table-wrap"><table class="sup" id="supTable"></table></div>
+  </section>
+
+  <section style="padding-top:0">
+    <h2 class="title" id="teachTitle" style="font-size:40px"></h2>
+    <ul id="teachList" style="max-width:860px;margin:0 auto 48px;padding-left:20px;font-weight:500;display:flex;flex-direction:column;gap:10px"></ul>
+    <div class="feat-pubs cols3" id="awards"></div>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
