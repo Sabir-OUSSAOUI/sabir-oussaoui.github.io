@@ -94,7 +94,6 @@ html.dark .theme{background:var(--light);color:var(--dark)}
 html.dark .hireme a{background:var(--light);color:var(--dark)}
 .hireme a:hover{background:var(--accent);border-color:var(--fg);color:var(--dark)}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero-icon{position:fixed;right:40px;bottom:40px;width:72px;opacity:.9;color:var(--accent)}
 
 /* ---------- about ---------- */
 .about-grid{display:grid;grid-template-columns:5fr 2.6fr 2.2fr;gap:48px;align-items:start}
@@ -268,6 +267,5 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   table.sup td:nth-child(2){min-width:0}
   .lb-nav{width:40px;height:40px;font-size:24px}.lightbox{padding:12px}.lightbox img{max-height:70vh}
   .hero-aff{font-size:13px}.hero-txt h1{font-size:34px}.title{font-size:34px}.pub,.pub.has-img{grid-template-columns:1fr}.pub-thumb{max-width:220px}.talk{grid-template-columns:1fr}.talk .tk{text-align:left}
-  .hireme{position:relative;left:auto;bottom:auto;margin:24px auto 0;width:140px;height:140px}.hero-icon{display:none}
-  footer{padding:24px 20px}
+  .hireme{position:relative;left:auto;bottom:auto;margin:24px auto 0;width:140px;height:140px}  footer{padding:24px 20px}
 }
