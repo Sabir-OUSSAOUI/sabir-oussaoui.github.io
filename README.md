@@ -1,5 +1,7 @@
 # Sabir Oussaoui - portfolio (HTML · CSS · JavaScript)
 
+Live site: **https://sabir-oussaoui.github.io**
+
 A static portfolio in the spirit of the CodeBucks Next.js developer-portfolio template, rebuilt
 with plain HTML, CSS and vanilla JavaScript - no framework, no build step.
 
@@ -11,7 +13,7 @@ Open `index.html` in a browser, or serve the folder:
 python3 -m http.server 8080   # then visit http://localhost:8080
 ```
 
-Deploy by uploading the folder as-is (GitHub Pages, Netlify, any static host).
+Deployed with GitHub Pages from the `main` branch of this repository (`sabir-oussaoui.github.io`); every push to `main` updates the live site.
 
 ## Pages
 
@@ -20,8 +22,8 @@ Deploy by uploading the folder as-is (GitHub Pages, Netlify, any static host).
 | `index.html` | Hero (portrait + animated headline), rotating "Let's talk" badge |
 | `about.html` | Biography, counters, circular skills map, Experience & Education timelines with scroll rail, teaching & awards |
 | `projects.html` | Featured case study + grid (P1-P4) |
-| `publications.html` | 13 CV publications with status / theme / year filters, featured papers, conferences list |
-| `certificates.html` | 26 certificates (awards, conferences, training, teaching) with category filter and lightbox; images in `images/certificates/` |
+| `publications.html` | Published and accepted papers with status / theme / year filters, graphical abstracts, featured papers, conferences list |
+| `certificates.html` | 27 certificates (awards, conferences, training, teaching) with category filter and lightbox; images in `images/certificates/` |
 
 ## Edit the content
 
