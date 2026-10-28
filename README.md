@@ -34,6 +34,10 @@ Pages contain only layout.
 - The CV PDF lives in `files/CV_OUSSAOUI.pdf` (`cvFile` in `js/data.js`); replace the file to update the Download CV link.
 - Publication statuses: `pub` (published), `accepted` (accepted, in press), `acc` (accepted with revisions), `rev` (under review).
 
+## Updating
+
+After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` number on their `<script>`/`<link>` tags in every HTML page so browsers fetch the new version instead of a cached one.
+
 ## Features
 
 - Light / dark mode (persisted in `localStorage`, follows system preference by default)
