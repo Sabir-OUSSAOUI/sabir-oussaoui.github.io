@@ -24,6 +24,7 @@ Deployed with GitHub Pages from the `main` branch of this repository (`sabir-ous
 | `projects.html` | Featured case study + grid (P1-P4) |
 | `publications.html` | Published and accepted papers with status / theme / year filters, graphical abstracts, featured papers, conferences list |
 | `certificates.html` | 27 certificates (awards, conferences, training, teaching) with category filter and lightbox; images in `images/certificates/` |
+| `events.html` | Events with photo, date, place, role and description; photo galleries in the lightbox; images in `images/events/` (`events` in `js/data.js`) |
 
 ## Edit the content
 

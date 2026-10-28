@@ -15,7 +15,8 @@ window.SITE = {
 
   i18n: {
     en: {
-      nav: { home: "Home", about: "About", projects: "Projects", pubs: "Publications", certs: "Certificates" },
+      nav: { home: "Home", about: "About", projects: "Projects", pubs: "Publications", certs: "Certificates", events: "Events" },
+      evTitle: "Events", evLede: "Conferences, workshops, field campaigns and outreach I have taken part in. Click a photo to see the full gallery.", evPhotos: "photos", evEmpty: "Events coming soon.",
       certTitle: "Certificates", certLede: "Awards, conference certificates, training and teaching attestations. Click any certificate to view it full size.", certCats: { all: "All", award: "Awards", conference: "Conferences", training: "Training", teaching: "Teaching & organisation" }, certCount: "certificates", close: "Close",
       hire: "Let's talk",
       heroTitle: "Earth Observation & AI for Drought Resilience",
@@ -45,7 +46,8 @@ window.SITE = {
       footer: "Built with plain HTML, CSS and JavaScript · no invented metrics", say: "Say hello"
     },
     fr: {
-      nav: { home: "Accueil", about: "À propos", projects: "Projets", pubs: "Publications", certs: "Certificats" },
+      nav: { home: "Accueil", about: "À propos", projects: "Projets", pubs: "Publications", certs: "Certificats", events: "Événements" },
+      evTitle: "Événements", evLede: "Conférences, ateliers, campagnes de terrain et actions de vulgarisation auxquels j'ai participé. Cliquez sur une photo pour voir la galerie.", evPhotos: "photos", evEmpty: "Événements à venir.",
       certTitle: "Certificats", certLede: "Distinctions, certificats de conférences, formations et attestations d'enseignement. Cliquez sur un certificat pour l'afficher en grand.", certCats: { all: "Tous", award: "Distinctions", conference: "Conférences", training: "Formations", teaching: "Enseignement et organisation" }, certCount: "certificats", close: "Fermer",
       hire: "Parlons-en",
       heroTitle: "Observation de la Terre et IA pour la résilience à la sécheresse",
@@ -79,6 +81,17 @@ window.SITE = {
 
   // Certificates: images live in images/certificates/<slug>.jpg (+ -thumb.jpg). cat: award | conference | training | teaching
   // optional extra: [more image slugs] shown as a gallery in the lightbox (photos, ceremony, etc.)
+  // Events (newest first). images: file names in images/events/ without .jpg (first one is the cover).
+  // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
+  //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
+  events: [
+    { date: "2024-02", place: "UM6P, Morocco", role: { en: "Project member", fr: "Membre du projet" },
+      title: { en: "Kick-off of the PCCI project", fr: "Lancement du projet PCCI" },
+      desc: { en: "I joined the Programme de Coopération Climatique Internationale (PCCI) project at Mohammed VI Polytechnic University (UM6P) and took part in its kick-off meeting on 21 February 2024.",
+              fr: "J'ai rejoint le projet Programme de Coopération Climatique Internationale (PCCI) à l'Université Mohammed VI Polytechnique (UM6P) et participé à sa réunion de lancement le 21 février 2024." },
+      images: ["pcci-kickoff-2024"] }
+  ],
+
   certificates: [
     { slug: "iwra-recognition-2025", extra: ["iwra-recognition-2025-photos"], cat: "award", date: "2025-12", y: 2025, org: "International Water Resources Association (IWRA)", en: "Certificate of Recognition - People's Choice Award, Early-Career Lightning Talk, XIX World Water Congress (one-year Silver Membership)", fr: "Certificat de reconnaissance - Prix du public, Early-Career Lightning Talk, XIXe Congrès mondial de l'eau (adhésion Silver d'un an)" },
     { slug: "iwra-appreciation-2025", cat: "conference", date: "2025-12", y: 2025, org: "IWRA - XIX World Water Congress, Marrakech", en: "Certificate of Appreciation - poster presentation on drought-severity mapping over Tadla and lower Tassaout, and Silver Membership in the Lightning Talks", fr: "Certificat d'appréciation - présentation par affiche sur la cartographie de la sévérité de la sécheresse (Tadla et Basse Tassaout) et adhésion Silver aux Lightning Talks" },

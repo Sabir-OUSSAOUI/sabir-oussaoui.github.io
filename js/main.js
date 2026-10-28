@@ -34,7 +34,7 @@
   /* ---- header / nav ---- */
   function renderNav() {
     const t = T().nav;
-    const links = [["index.html", t.home, "home"], ["about.html", t.about, "about"], ["projects.html", t.projects, "projects"], ["publications.html", t.pubs, "pubs"], ["certificates.html", t.certs, "certs"]];
+    const links = [["index.html", t.home, "home"], ["about.html", t.about, "about"], ["projects.html", t.projects, "projects"], ["publications.html", t.pubs, "pubs"], ["certificates.html", t.certs, "certs"]].concat(S.events && S.events.length ? [["events.html", t.events, "events"]] : []);
     const linkHtml = links.map(([h, l, k]) => `<a class="nl" href="${h}" ${page === k ? 'aria-current="page"' : ""}>${esc(l)}</a>`).join("");
     const socials = `<a class="soc" href="${S.links.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>
       <a class="soc" href="${S.links.scholar}" target="_blank" rel="noopener" aria-label="Google Scholar">${ICONS.scholar}</a>
@@ -244,9 +244,32 @@
     document.addEventListener("keydown", (e) => { if (!$("#lightbox").classList.contains("open")) return; if (e.key === "Escape") closeLightbox(); if (e.key === "ArrowLeft") stepLb(-1); if (e.key === "ArrowRight") stepLb(1); });
   }
 
+  function renderEvents() {
+    const t = T();
+    animateText($("#evTitle"), t.evTitle);
+    $("#evLede").textContent = t.evLede;
+    const list = (S.events || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+    if (!list.length) { $("#evList").innerHTML = `<p class="mono" style="text-align:center">${esc(t.evEmpty)}</p>`; return; }
+    $("#evList").innerHTML = list.map((e, i) => `
+      <article class="event reveal${i % 2 ? " flip" : ""}">
+        <button class="event-img" data-i="${i}" aria-label="${esc(e.title[lang])}">
+          <img src="images/events/${e.images[0]}-thumb.jpg" alt="" loading="lazy">
+          ${e.images.length > 1 ? `<span class="cert-more">${e.images.length} ${esc(t.evPhotos)}</span>` : ""}
+        </button>
+        <div class="event-body">
+          <div class="event-meta"><span class="mono">${e.date.replace("-", "/")}${e.place ? " · " + esc(e.place) : ""}</span>${e.role ? `<span class="status s-pub">${esc(e.role[lang])}</span>` : ""}</div>
+          <h3>${esc(e.title[lang])}</h3>
+          ${(e.desc[lang] || "").split("\n\n").map((p) => `<p>${esc(p)}</p>`).join("")}
+          ${e.link ? `<a class="btn ghost" style="align-self:flex-start" href="${e.link}" target="_blank" rel="noopener">${lang === "fr" ? "En savoir plus" : "Learn more"} ↗</a>` : ""}
+        </div>
+      </article>`).join("");
+    $$("#evList .event-img").forEach((b) => b.addEventListener("click", () => { const e = list[Number(b.dataset.i)]; openImage(e.images.map((s) => `events/${s}`), `${e.title[lang]}${e.place ? " - " + e.place : ""}`); }));
+    observeReveals();
+  }
+
   function renderAll() {
     renderNav(); renderFooter(); padForHeader();
-    ({ home: renderHome, about: renderAbout, projects: renderProjects, pubs: renderPubs, certs: renderCerts }[page] || (() => {}))();
+    ({ home: renderHome, about: renderAbout, projects: renderProjects, pubs: renderPubs, certs: renderCerts, events: renderEvents }[page] || (() => {}))();
     observeReveals(); timelineRails();
   }
 
