@@ -85,6 +85,11 @@ window.SITE = {
   // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
   //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
   events: [
+    { date: "2024-04", place: "Meknès, Morocco", role: { en: "Farmer survey", fr: "Enquête agricole" },
+      title: { en: "International Agriculture Show in Meknès (SIAM)", fr: "Salon International de l'Agriculture au Maroc (SIAM), Meknès" },
+      desc: { en: "At the International Agriculture Show in Meknès (SIAM), we ran a survey with farmers from different regions of Morocco, in collaboration with the Programme de Coopération Climatique Internationale (PCCI) and the International Water Research Institute (IWRI).\n\nMany thanks to Abdelghani Boudhar, Abdessamad Hadri, Hanadé Houmma Ismaguil and Ismail Karaoui, and to every member of the team, for making this work possible: together we are working towards farming that is more sustainable and resilient to climate change.",
+              fr: "Au Salon International de l'Agriculture à Meknès (SIAM), nous avons mené une enquête auprès d'agriculteurs de différentes régions du Maroc, en collaboration avec le Programme de Coopération Climatique Internationale (PCCI) et l'Institut International de Recherche en Eau (IWRI).\n\nMerci à Abdelghani Boudhar, Abdessamad Hadri, Hanadé Houmma Ismaguil et Ismail Karaoui, ainsi qu'à tous les membres de l'équipe : ensemble, nous travaillons pour une agriculture plus durable et plus résiliente au changement climatique." },
+      images: ["siam-meknes-2024"] },
     { date: "2024-02", place: "UM6P, Morocco", role: { en: "Project member", fr: "Membre du projet" },
       title: { en: "Kick-off of the PCCI project", fr: "Lancement du projet PCCI" },
       desc: { en: "I joined the Programme de Coopération Climatique Internationale (PCCI) project at Mohammed VI Polytechnic University (UM6P) and took part in its kick-off meeting on 21 February 2024.",
