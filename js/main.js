@@ -251,11 +251,11 @@
     const list = (S.events || []).slice().sort((a, b) => b.date.localeCompare(a.date));
     if (!list.length) { $("#evList").innerHTML = `<p class="mono" style="text-align:center">${esc(t.evEmpty)}</p>`; return; }
     $("#evList").innerHTML = list.map((e, i) => `
-      <article class="event reveal${i % 2 ? " flip" : ""}">
-        <button class="event-img" data-i="${i}" aria-label="${esc(e.title[lang])}">
+      <article class="event reveal${i % 2 ? " flip" : ""}${(e.images || []).length ? "" : " noimg"}">
+        ${(e.images || []).length ? `<button class="event-img" data-i="${i}" aria-label="${esc(e.title[lang])}">
           <img src="images/events/${e.images[0]}-thumb.jpg" alt="" loading="lazy">
           ${e.images.length > 1 ? `<span class="cert-more">${e.images.length} ${esc(t.evPhotos)}</span>` : ""}
-        </button>
+        </button>` : ""}
         <div class="event-body">
           <div class="event-meta"><span class="mono">${e.date.replace("-", "/")}${e.place ? " · " + esc(e.place) : ""}</span>${e.role ? `<span class="status s-pub">${esc(e.role[lang])}</span>` : ""}</div>
           <h3>${esc(e.title[lang])}</h3>
