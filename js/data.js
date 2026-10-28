@@ -85,6 +85,11 @@ window.SITE = {
   // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
   //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
   events: [
+    { date: "2024-12", place: "Ben Guerir - Marrakech, Morocco", role: { en: "Speaker (2 talks)", fr: "Intervenant (2 présentations)" },
+      title: { en: "6th IAHR Africa Congress", fr: "6e Congrès Africain de l'IAHR" },
+      desc: { en: "At the 6th Africa Congress of the International Association for Hydro-Environment Engineering and Research (IAHR), hosted by UM6P from 9 to 12 December 2024, I gave two presentations: my own work on the spatial assessment of the impact of drought on agricultural systems, and, on behalf of my colleague Hanadé Houmma Ismaguil, the development of a new hydrological drought index.\n\nMany thanks to my supervisors Abdessamad Hadri and Abdelghani Boudhar, and to all co-authors, for their guidance and support.",
+              fr: "Au 6e Congrès Africain de l'International Association for Hydro-Environment Engineering and Research (IAHR), organisé par l'UM6P du 9 au 12 décembre 2024, j'ai présenté deux communications : mes travaux sur l'évaluation spatiale de l'impact de la sécheresse sur les systèmes agricoles et, au nom de mon collègue Hanadé Houmma Ismaguil, le développement d'un nouvel indice de sécheresse hydrologique.\n\nMerci à mes encadrants Abdessamad Hadri et Abdelghani Boudhar, ainsi qu'à tous les co-auteurs, pour leur accompagnement." },
+      images: ["iahr-africa-2024-1", "iahr-africa-2024-2"] },
     { date: "2024-11", place: "UM6P, Morocco", role: { en: "Pre-doctoral fellow", fr: "Doctorant prédoctoral" },
       title: { en: "CAES pre-doc cohort 2024: welcome session", fr: "Cohorte prédoctorale CAES 2024 : séance d'accueil" },
       desc: { en: "On 4 November 2024 I joined the welcome session of the 2024 pre-doc cohort of the College of Agriculture and Environmental Sciences (CAES) at UM6P. Thanks to Hicham El Habti for opening the event, and to Evelyn Chiyevo Garwe, Mustapha El Bouhssini, Ismail Ghorbal and Achaimaa Mdini for their contributions.",
