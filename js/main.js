@@ -185,7 +185,7 @@
     $("#filters").innerHTML =
       chips("s", t.fStatus, [["all", t.all], ...Object.entries(t.statuses).filter(([k]) => k !== "rev")], "s") +
       chips("th", t.fTheme, [["all", t.all], ...Object.entries(t.themes)], "th") +
-      chips("y", t.fYear, [["all", t.all], ["2026", "2026"], ["2025", "2025"], ["2024", "2024"]], "y");
+      chips("y", t.fYear, [["all", t.all], ["2027", "2027"], ["2026", "2026"], ["2025", "2025"], ["2024", "2024"]], "y");
     $$("#filters .chip").forEach((b) => b.addEventListener("click", () => { filters[b.dataset.f] = b.dataset.v; renderPubs(); }));
     const row = (p) => `<li class="pub${p.img ? " has-img" : ""}"><span class="yr">${p.y}</span>${p.img ? `<button class="pub-thumb" data-img="${p.img}" aria-label="View graphical abstract"><img src="images/publications/${p.img}-thumb.jpg" alt="" loading="lazy"></button>` : ""}<div><div class="pt">${esc(p.t)}</div><div class="pa">${esc(p.a[0])}<b>S. Oussaoui</b>${esc(p.a[1])}</div><div class="pv">${esc(p.v)}</div>${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" style="font:500 13px var(--mono)">${esc(p.linkLabel)}</a>` : ""}</div><div class="side"><span class="status s-${p.s === "pub" || p.s === "accepted" ? "pub" : "rev"}">${esc(t.statuses[p.s])}</span><span class="status">${esc(t.themes[p.th])}</span></div></li>`;
     const list = S.publications.filter((p) => p.s !== "rev").filter((p) => (filters.s === "all" || p.s === filters.s) && (filters.th === "all" || p.th === filters.th) && (filters.y === "all" || String(p.y) === filters.y));
