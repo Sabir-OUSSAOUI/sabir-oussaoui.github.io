@@ -85,6 +85,12 @@ window.SITE = {
   // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
   //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
   events: [
+    { date: "2024-11", place: "UM6P, Morocco", role: { en: "Pre-doctoral fellow", fr: "Doctorant prédoctoral" },
+      title: { en: "CAES pre-doc cohort 2024: welcome session", fr: "Cohorte prédoctorale CAES 2024 : séance d'accueil" },
+      desc: { en: "On 4 November 2024 I joined the welcome session of the 2024 pre-doc cohort of the College of Agriculture and Environmental Sciences (CAES) at UM6P. Thanks to Hicham El Habti for opening the event, and to Evelyn Chiyevo Garwe, Mustapha El Bouhssini, Ismail Ghorbal and Achaimaa Mdini for their contributions.",
+              fr: "Le 4 novembre 2024, j'ai participé à la séance d'accueil de la cohorte prédoctorale 2024 du College of Agriculture and Environmental Sciences (CAES) de l'UM6P. Merci à Hicham El Habti pour l'ouverture, ainsi qu'à Evelyn Chiyevo Garwe, Mustapha El Bouhssini, Ismail Ghorbal et Achaimaa Mdini pour leurs interventions." },
+      images: ["caes-predoc-2024-1", "caes-predoc-2024-2"],
+      link: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7259156909109186560/" },
     { date: "2024-04", place: "Meknès, Morocco", role: { en: "Farmer survey", fr: "Enquête agricole" },
       title: { en: "International Agriculture Show in Meknès (SIAM)", fr: "Salon International de l'Agriculture au Maroc (SIAM), Meknès" },
       desc: { en: "At the International Agriculture Show in Meknès (SIAM), we ran a survey with farmers from different regions of Morocco, in collaboration with the Programme de Coopération Climatique Internationale (PCCI) and the International Water Research Institute (IWRI).\n\nMany thanks to Abdelghani Boudhar, Abdessamad Hadri, Hanadé Houmma Ismaguil and Ismail Karaoui, and to every member of the team, for making this work possible: together we are working towards farming that is more sustainable and resilient to climate change.",
