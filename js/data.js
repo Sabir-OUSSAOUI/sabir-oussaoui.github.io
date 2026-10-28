@@ -85,7 +85,7 @@ window.SITE = {
   // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
   //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
   events: [
-    { date: "2026-06", place: "Ait Ourir & Tahnaout, Morocco", role: { en: "Field team", fr: "Équipe de terrain" },
+    { date: "2025-06", place: "Ait Ourir & Tahnaout, Morocco", role: { en: "Field team", fr: "Équipe de terrain" },
       title: { en: "ERT mission on the High Atlas piedmont aquifer", fr: "Mission ERT sur l'aquifère du piémont du Haut Atlas" },
       desc: { en: "A hydrogeophysical field mission using Electrical Resistivity Tomography (ERT) in the Ait Ourir and Tahnaout regions, as part of Abderrahman El Farchouni's PhD research supervised by Professors Abdessamad Hadri and Azzouz Kchikach. The aim is to improve the conceptual model of the High Atlas piedmont aquifer system.\n\nThanks to the IWRI team, Said El Ouafi, Mohamed Samih and Ayoub Ayaou, and to the interns Hassan Amarir, Abderrahmane Tililani, Hicham Ajdour and Ayoub Ountkattou for their commitment during the mission.",
               fr: "Une mission hydrogéophysique de terrain par Tomographie de Résistivité Électrique (ERT) dans les régions d'Ait Ourir et de Tahnaout, dans le cadre de la thèse d'Abderrahman El Farchouni, encadrée par les Professeurs Abdessamad Hadri et Azzouz Kchikach. L'objectif est d'améliorer le modèle conceptuel du système aquifère du piémont du Haut Atlas.\n\nMerci à l'équipe de l'IWRI, Said El Ouafi, Mohamed Samih et Ayoub Ayaou, ainsi qu'aux stagiaires Hassan Amarir, Abderrahmane Tililani, Hicham Ajdour et Ayoub Ountkattou pour leur engagement pendant la mission." },
