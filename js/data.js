@@ -87,10 +87,12 @@ window.SITE = {
   // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
   //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
   references: [
-    { name: "Abdessamad HADRI", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "Abdessamad.HADRI@um6p.ma", phone: "+212 667-021179" },
-    { name: "Christophe KINNARD", status: { en: "Professor", fr: "Professeur" }, inst: "RIVE - UQTR, Canada", email: "Christophe.Kinnard@uqtr.ca", phone: "+1 (819) 266-7971" },
-    { name: "El Mahdi EL KHALKI", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "ElMahdi.ELKHALKI@um6p.ma", phone: "+212 666-925541" },
-    { name: "Abdelghani BOUDHAR", status: { en: "Professor", fr: "Professeur" }, inst: "FST - Université Cadi Ayyad, Morocco", email: "a.boudhar@uca.ac.ma", phone: "+212 668-949017" }
+    { name: "El Mahdi EL KHALKI", photo: "el-khalki", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "ElMahdi.ELKHALKI@um6p.ma", phone: "+212 666-925541" },
+    { name: "Abdessamad HADRI", photo: "hadri", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "Abdessamad.HADRI@um6p.ma", phone: "+212 667-021179" },
+    { name: "Christophe KINNARD", photo: "kinnard", status: { en: "Professor", fr: "Professeur" }, inst: "RIVE - UQTR, Canada", email: "Christophe.Kinnard@uqtr.ca", phone: "+1 (819) 266-7971" },
+    { name: "Abdelghani BOUDHAR", photo: "boudhar", status: { en: "Professor", fr: "Professeur" }, inst: "FST - Université Cadi Ayyad, Morocco", email: "a.boudhar@uca.ac.ma", phone: "+212 668-949017" },
+    { name: "Ismail KARAOUI", photo: "karaoui", status: { en: "Assistant Professor", fr: "Professeur assistant" }, inst: "FST Beni Mellal - USMS, Morocco", email: "i.karaoui@usms.ma", phone: "+212 642-665908" },
+    { name: "Jamal-Eddine OUZEMOU", photo: "ouzemou", inst: "CRSA - UM6P, Morocco", email: "jamal-eddine.ouzemou@um6p.ma", phone: "+212 690-643619" }
   ],
   events: [
     { date: "2026-09", place: "CRASTE-LF, Rabat, Morocco", role: { en: "Jury member & co-supervisor", fr: "Membre du jury et co-encadrant" },

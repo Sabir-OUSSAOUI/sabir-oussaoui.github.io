@@ -274,8 +274,10 @@
     $("#refLede").textContent = t.refLede;
     $("#refGrid").innerHTML = (S.references || []).map((r) => `
       <article class="ref reveal">
-        <h3>${esc(r.name)}</h3>
-        <p class="ref-status">${esc(r.status[lang])}</p>
+        <div class="ref-head">
+          ${r.photo ? `<img class="ref-photo" src="images/references/${r.photo}.jpg" alt="${esc(r.name)}" width="88" height="88" loading="lazy">` : ""}
+          <div><h3>${esc(r.name)}</h3>${r.status ? `<p class="ref-status">${esc(r.status[lang])}</p>` : ""}</div>
+        </div>
         <p class="mono ref-inst">${esc(r.inst)}</p>
         <div class="ref-contact">
           <a href="mailto:${esc(r.email)}?subject=${encodeURIComponent("Reference - Sabir OUSSAOUI")}" aria-label="${esc(t.refEmail)} ${esc(r.name)}">${ICONS.mail}<span>${esc(r.email)}</span></a>
