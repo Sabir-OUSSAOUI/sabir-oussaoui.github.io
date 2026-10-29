@@ -91,7 +91,7 @@ window.SITE = {
     { name: "Abdessamad HADRI", photo: "hadri", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "Abdessamad.HADRI@um6p.ma", phone: "+212 667-021179" },
     { name: "Abdelghani BOUDHAR", photo: "boudhar", status: { en: "Professor", fr: "Professeur" }, inst: "FST - Université Cadi Ayyad, Morocco", email: "a.boudhar@uca.ac.ma", phone: "+212 668-949017" },
     { name: "El Mahdi EL KHALKI", photo: "el-khalki", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "ElMahdi.ELKHALKI@um6p.ma", phone: "+212 666-925541" },
-    { name: "Jamal-Eddine OUZEMOU", photo: "ouzemou", inst: "CRSA - UM6P, Morocco", email: "jamal-eddine.ouzemou@um6p.ma", phone: "+212 690-643619" },
+    { name: "Jamal-Eddine OUZEMOU", photo: "ouzemou", status: { en: "Assistant Professor", fr: "Professeur assistant" }, inst: "CRSA - UM6P, Morocco", email: "jamal-eddine.ouzemou@um6p.ma", phone: "+212 690-643619" },
     { name: "Ismail KARAOUI", photo: "karaoui", status: { en: "Assistant Professor", fr: "Professeur assistant" }, inst: "FST Beni Mellal - USMS, Morocco", email: "i.karaoui@usms.ma", phone: "+212 642-665908" }
   ],
   events: [
