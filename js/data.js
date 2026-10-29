@@ -15,8 +15,9 @@ window.SITE = {
 
   i18n: {
     en: {
-      nav: { home: "Home", about: "About", projects: "Projects", pubs: "Publications", certs: "Certificates", events: "Events" },
+      nav: { home: "Home", about: "About", projects: "Projects", pubs: "Publications", certs: "Certificates", events: "Events", refs: "References" },
       evTitle: "Events", evLede: "Conferences, workshops, field campaigns and outreach I have taken part in. Click a photo to see the full gallery.", evPhotos: "photos", evEmpty: "Events coming soon.",
+      refTitle: "References", refLede: "Professors who can be contacted for a reference about Sabir OUSSAOUI.", refEmail: "Email", refPhone: "Phone",
       certTitle: "Certificates", certLede: "Awards, conference certificates, training and teaching attestations. Click any certificate to view it full size.", certCats: { all: "All", award: "Awards", conference: "Conferences", training: "Training", teaching: "Teaching & organisation" }, certCount: "certificates", close: "Close",
       hire: "Let's talk",
       heroTitle: "Earth Observation & AI for Drought Resilience",
@@ -46,8 +47,9 @@ window.SITE = {
       footer: "Built with plain HTML, CSS and JavaScript · no invented metrics", say: "Say hello"
     },
     fr: {
-      nav: { home: "Accueil", about: "À propos", projects: "Projets", pubs: "Publications", certs: "Certificats", events: "Événements" },
+      nav: { home: "Accueil", about: "À propos", projects: "Projets", pubs: "Publications", certs: "Certificats", events: "Événements", refs: "Références" },
       evTitle: "Événements", evLede: "Conférences, ateliers, campagnes de terrain et actions de vulgarisation auxquels j'ai participé. Cliquez sur une photo pour voir la galerie.", evPhotos: "photos", evEmpty: "Événements à venir.",
+      refTitle: "Références", refLede: "Professeurs pouvant être contactés pour une référence au sujet de Sabir OUSSAOUI.", refEmail: "Courriel", refPhone: "Téléphone",
       certTitle: "Certificats", certLede: "Distinctions, certificats de conférences, formations et attestations d'enseignement. Cliquez sur un certificat pour l'afficher en grand.", certCats: { all: "Tous", award: "Distinctions", conference: "Conférences", training: "Formations", teaching: "Enseignement et organisation" }, certCount: "certificats", close: "Fermer",
       hire: "Parlons-en",
       heroTitle: "Observation de la Terre et IA pour la résilience à la sécheresse",
@@ -84,6 +86,12 @@ window.SITE = {
   // Events (newest first). images: file names in images/events/ without .jpg (first one is the cover).
   // { date: "2026-05", place: "City, Country", role: { en: "Speaker", fr: "Intervenant" },
   //   title: { en: "...", fr: "..." }, desc: { en: "...", fr: "..." }, images: ["slug-1", "slug-2"], link: "https://..." }
+  references: [
+    { name: "Abdessamad HADRI", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "Abdessamad.HADRI@um6p.ma", phone: "+212 667-021179" },
+    { name: "Christophe KINNARD", status: { en: "Professor", fr: "Professeur" }, inst: "RIVE - UQTR, Canada", email: "Christophe.Kinnard@uqtr.ca", phone: "+1 (819) 266-7971" },
+    { name: "El Mahdi EL KHALKI", status: { en: "Assistant Professor (HDR)", fr: "Professeur assistant habilité (HDR)" }, inst: "IWRI - UM6P, Morocco", email: "ElMahdi.ELKHALKI@um6p.ma", phone: "+212 666-925541" },
+    { name: "Abdelghani BOUDHAR", status: { en: "Professor", fr: "Professeur" }, inst: "FST - Université Cadi Ayyad, Morocco", email: "a.boudhar@uca.ac.ma", phone: "+212 668-949017" }
+  ],
   events: [
     { date: "2026-09", place: "CRASTE-LF, Rabat, Morocco", role: { en: "Jury member & co-supervisor", fr: "Membre du jury et co-encadrant" },
       title: { en: "Master's defense of Lerrys Angoue Obiang", fr: "Soutenance de master de Lerrys Angoue Obiang" },
