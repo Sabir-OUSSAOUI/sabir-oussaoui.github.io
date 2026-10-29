@@ -64,7 +64,7 @@
   function renderThemeIcon() { const dark = root.classList.contains("dark"); $$("#themeBtn,[data-m='themeBtn']").forEach((b) => (b.innerHTML = dark ? ICONS.sun : ICONS.moon)); }
 
   function renderFooter() {
-    $("#footer").innerHTML = `<span>© ${new Date().getFullYear()} ${esc(S.name)} · UM6P-IWRI · UQTR-RIVE</span><span>${esc(T().footer)}</span><a href="${outlook()}" target="_blank" rel="noopener">${esc(T().say)}</a>`;
+    $("#footer").innerHTML = `<span>© ${new Date().getFullYear()} ${esc(S.name)} · UM6P-IWRI · UQTR-RIVE</span><a href="${outlook()}" target="_blank" rel="noopener">${esc(T().say)}</a>`;
   }
 
   /* ---- animated headline (word by word) ---- */
