@@ -1,5 +1,5 @@
 /* Fluid ink cursor: a plain JavaScript port of the "SplashCursor" WebGL2 fluid simulation.
-   Colours follow the portfolio: the cyan accent, a sky blue and the soft green.
+   Colours follow the portfolio palette: vivid purple, gold and a soft lavender.
    It sits above the page with pointer-events:none, so it never blocks clicks.
    Skipped for visitors who prefer reduced motion and on touch-only devices. */
 (function () {
@@ -9,7 +9,7 @@
 
   var root = document.documentElement;
   var S = {
-    palette: ["#55dde0", "#4f8cff", "#8fcb9b"].map(parseColor),
+    palette: ["#8B5CF6", "#FBBF24", "#C4B5FD"].map(parseColor),
     colorSpeed: 0.6, intensity: 0.75, size: 0.9, force: 1, swirl: 3,
     trail: 0.8, momentum: 1, shading: 1, glow: 0.25, quality: "medium", clickSplash: true
   };

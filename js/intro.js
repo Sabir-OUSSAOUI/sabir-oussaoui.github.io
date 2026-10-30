@@ -39,7 +39,7 @@
     '<div class="hg-grid">' +
       layer("hgBase", "rgba(255,255,255,0.05)", 1) +
       '<div class="hg-mask">' + layer("hgHi", "rgba(255,255,255,0.22)", 1) +
-        '<div class="hg-warp-grid">' + layer("hgWarp", "rgba(100,200,255,0.8)", 2) + '</div></div>' +
+        '<div class="hg-warp-grid">' + layer("hgWarp", "rgba(139,92,246,0.85)", 2) + '</div></div>' +
     '</div>' +
     '<div class="hg-flash"></div><div class="hg-dodge"></div>' +
     '<div class="hg-content">' +
@@ -118,7 +118,7 @@
     g2.setTransform(gdpr, 0, 0, gdpr, 0, 0);
     g2.clearRect(0, 0, gw, gh);
     var glow = g2.createRadialGradient(cx, cy, R * 0.15, cx, cy, Math.min(R * 1.25, gw * 0.5, gh * 0.42));
-    glow.addColorStop(0, "rgba(70,120,220,.28)"); glow.addColorStop(1, "rgba(70,120,220,0)");
+    glow.addColorStop(0, "rgba(91,33,182,.32)"); glow.addColorStop(1, "rgba(70,120,220,0)");
     g2.fillStyle = glow; g2.fillRect(0, 0, gw, gh);
     g2.lineWidth = 1;
     // meridians and parallels
@@ -130,7 +130,7 @@
         var pt = P([Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon)]);
         if (s1) g2.lineTo(pt[0], pt[1]); else g2.moveTo(pt[0], pt[1]);
       }
-      g2.strokeStyle = "rgba(150,180,240,.16)"; g2.stroke();
+      g2.strokeStyle = "rgba(167,139,250,.16)"; g2.stroke();
     }
     for (var l = -2; l <= 2; l++) {
       var la = l * Math.PI / 6;
@@ -139,11 +139,11 @@
         var lo = s2 / 64 * Math.PI * 2, pt2 = P([Math.cos(la) * Math.cos(lo), Math.sin(la), Math.cos(la) * Math.sin(lo)]);
         if (s2) g2.lineTo(pt2[0], pt2[1]); else g2.moveTo(pt2[0], pt2[1]);
       }
-      g2.strokeStyle = "rgba(150,180,240,.14)"; g2.stroke();
+      g2.strokeStyle = "rgba(167,139,250,.14)"; g2.stroke();
     }
     // dust
     for (var d1 = 0; d1 < dust.length; d1++) {
-      var q1 = P(dust[d1]); g2.fillStyle = "rgba(170,200,255," + (q1[2] > 0 ? .35 : .1) + ")";
+      var q1 = P(dust[d1]); g2.fillStyle = "rgba(196,181,253," + (q1[2] > 0 ? .35 : .1) + ")";
       g2.fillRect(q1[0], q1[1], 1.1, 1.1);
     }
     // orbit rings with travelling satellites
@@ -154,24 +154,24 @@
         var p3 = rotP([Math.cos(an) * rg[0], 0, Math.sin(an) * rg[0]], 0, rg[1]);
         var q3 = P(p3); if (s3) g2.lineTo(q3[0], q3[1]); else g2.moveTo(q3[0], q3[1]);
       }
-      g2.strokeStyle = "rgba(160,190,240,.28)"; g2.stroke();
+      g2.strokeStyle = "rgba(167,139,250,.30)"; g2.stroke();
       var sa2 = rg[2] + t * (0.25 + r3 * 0.08);
       var sat = P(rotP([Math.cos(sa2) * rg[0], 0, Math.sin(sa2) * rg[0]], 0, rg[1]));
-      g2.shadowColor = "rgba(150,200,255,.9)"; g2.shadowBlur = 14;
-      g2.fillStyle = "rgba(225,238,255," + (sat[2] > 0 ? .95 : .45) + ")";
+      g2.shadowColor = "rgba(251,191,36,.9)"; g2.shadowBlur = 14;
+      g2.fillStyle = "rgba(253,230,138," + (sat[2] > 0 ? .95 : .45) + ")";
       g2.beginPath(); g2.arc(sat[0], sat[1], 3.2, 0, Math.PI * 2); g2.fill(); g2.shadowBlur = 0;
     }
     // network links and nodes
     var pr = nodes.map(P);
     for (var e1 = 0; e1 < links.length; e1++) {
       var A = pr[links[e1][0]], B = pr[links[e1][1]], vis = (A[2] + B[2]) / 2;
-      g2.strokeStyle = "rgba(170,205,255," + (vis > 0 ? .5 : .12) + ")";
+      g2.strokeStyle = "rgba(196,181,253," + (vis > 0 ? .5 : .12) + ")";
       g2.beginPath(); g2.moveTo(A[0], A[1]); g2.lineTo(B[0], B[1]); g2.stroke();
     }
     for (var n1 = 0; n1 < pr.length; n1++) {
       var Q = pr[n1], front = Q[2] > 0, tw = 0.75 + 0.25 * Math.sin(t * 1.6 + n1);
-      g2.shadowColor = "rgba(140,190,255,.95)"; g2.shadowBlur = front ? 16 : 4;
-      g2.fillStyle = "rgba(220,235,255," + (front ? .95 * tw : .3) + ")";
+      g2.shadowColor = "rgba(139,92,246,.95)"; g2.shadowBlur = front ? 16 : 4;
+      g2.fillStyle = "rgba(237,233,254," + (front ? .95 * tw : .3) + ")";
       g2.beginPath(); g2.arc(Q[0], Q[1], nodes[n1][3] * (front ? 3 : 1.8), 0, Math.PI * 2); g2.fill();
     }
     g2.shadowBlur = 0;

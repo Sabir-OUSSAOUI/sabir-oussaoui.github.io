@@ -64,8 +64,12 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 
 ## Cursor effect
 
-`js/splash-cursor.js` adds a fluid "ink" trail that follows the mouse on every page, with a splash on click. It is a plain JavaScript port of the "SplashCursor" WebGL2 fluid simulation, coloured with the site palette (cyan `#55dde0`, blue `#4f8cff`, green `#8fcb9b`). It never blocks clicks, adapts to light mode, and is skipped on touch-only devices and for visitors who prefer reduced motion.
+`js/splash-cursor.js` adds a fluid "ink" trail that follows the mouse on every page, with a splash on click. It is a plain JavaScript port of the "SplashCursor" WebGL2 fluid simulation, coloured with the site palette (purple `#8B5CF6`, gold `#FBBF24`, lavender `#C4B5FD`). It never blocks clicks, adapts to light mode, and is skipped on touch-only devices and for visitors who prefer reduced motion.
 
 ## Navigation
 
 Links between pages are handled in `js/main.js` without a full reload: the new page's `<main>` is fetched and swapped in with a short fade, so the header, background and cursor effect keep running and nothing flashes. Back/forward buttons work, and if anything fails the browser falls back to a normal page load.
+
+## Colours
+
+Dark mode (default): backgrounds `#121212` with a static gradient to `#1E1B26` / `#2A1B38`, cards `#1E1B26`, purple `#8B5CF6` for subheadings, icons and hover, deep purple `#5B21B6` for card shadows and accents, gold `#FBBF24` (with dark text) for main buttons and the active menu item, text `#F8FAFC` and `#94A3B8`. Light mode uses `#F8FAFC` with deep purple accents and the same gold buttons. All colours are CSS variables at the top of `css/style.css`.
