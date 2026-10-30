@@ -40,16 +40,32 @@
     "images/events/msc-defense-angoue-1-thumb.jpg"
   ];
   var CP = { perspective: 30, cardWidth: 18, cardHeight: 25, cardRadius: 0.6, birthHeight: 2.6, exitHeight: 46, railBirth: -11, railExit: 44, fan: 3.3, turnBirth: 6, turnExit: 28, stops: 24 };
-  var CARDS = 12, SPEED = 26, AXIS = 52;
+  var CARDS = 8, SPEED = 24, AXIS = 52;
+  // Each card's position along the path is retimed so that two neighbouring
+  // cards (one time-step apart) always overlap by OVERLAP of their width on screen.
+  var OVERLAP = 0.20, STEPS_PER_CARD = 6;
+  function pathAt(u) {
+    var scale = (CP.birthHeight / CP.cardHeight) * Math.pow(CP.exitHeight / CP.birthHeight, u);
+    return { z: CP.perspective * (1 - 1 / scale), rail: CP.railExit - (CP.railExit - CP.railBirth) * Math.pow(Math.max(0, 1 - u), CP.fan), turn: CP.turnBirth + (CP.turnExit - CP.turnBirth) * u };
+  }
+  function edges(u) {
+    var q = pathAt(u), t = q.turn * Math.PI / 180;
+    var f = function (dx) { return (q.rail + dx * Math.cos(t)) * CP.perspective / (CP.perspective - (q.z + dx * Math.sin(t))); };
+    return [f(-CP.cardWidth / 2), f(CP.cardWidth / 2)];
+  }
+  function overlap(a, b) { var A = edges(a), B = edges(b); return (A[1] - B[0]) / (A[1] - A[0]); }
+  function nextU(u) { var lo = u + 1e-6, hi = u + 0.6; for (var n = 0; n < 50; n++) { var m = (lo + hi) / 2; if (overlap(u, m) > OVERLAP) lo = m; else hi = m; } return (lo + hi) / 2; }
+  var TIMING = (function () {
+    var first = nextU(0), us = [], total = CARDS * STEPS_PER_CARD;
+    for (var k = 0; k <= STEPS_PER_CARD; k++) us.push(first * k / STEPS_PER_CARD);
+    for (var k2 = STEPS_PER_CARD + 1; k2 <= total; k2++) us.push(nextU(us[k2 - STEPS_PER_CARD]));
+    return us;
+  })();
   function corridorKeyframes(dir, name) {
-    var out = [];
-    for (var k = 0; k <= CP.stops; k++) {
-      var u = k / CP.stops;
-      var scale = (CP.birthHeight / CP.cardHeight) * Math.pow(CP.exitHeight / CP.birthHeight, u);
-      var z = CP.perspective * (1 - 1 / scale);
-      var rail = CP.railExit - (CP.railExit - CP.railBirth) * Math.pow(1 - u, CP.fan);
-      var turn = CP.turnBirth + (CP.turnExit - CP.turnBirth) * u;
-      out.push((u * 100).toFixed(2) + "%{transform:translate3d(" + (dir * rail).toFixed(2) + "cqw,0," + z.toFixed(2) + "cqw) rotateY(" + (-dir * turn).toFixed(2) + "deg)}");
+    var out = [], total = TIMING.length - 1;
+    for (var k = 0; k <= total; k++) {
+      var q = pathAt(TIMING[k]);
+      out.push((k / total * 100).toFixed(3) + "%{transform:translate3d(" + (dir * q.rail).toFixed(2) + "cqw,0," + q.z.toFixed(2) + "cqw) rotateY(" + (-dir * q.turn).toFixed(2) + "deg)}");
     }
     return "@keyframes " + name + "{" + out.join("") + "}";
   }
@@ -62,10 +78,17 @@
     var cards = "";
     ["hgRailR", "hgRailL"].forEach(function (rail, r) {
       for (var i = 0; i < CARDS; i++) {
-        var src = STREAM_IMAGES[(i * 2 + r) % STREAM_IMAGES.length]; // 2 rails x CARDS = each photo once
+        var src = STREAM_IMAGES[(r * CARDS + i) % STREAM_IMAGES.length]; // photos rotate on each loop (see animationiteration)
         cards += '<div class="hg-card" style="left:50%;top:' + AXIS + '%;width:' + CP.cardWidth + 'cqw;height:' + CP.cardHeight + 'cqw;margin-left:' + (-CP.cardWidth / 2) + 'cqw;margin-top:' + (-CP.cardHeight / 2) + 'cqw;border-radius:' + CP.cardRadius + 'cqw;animation:' + rail + ' ' + SPEED + 's linear infinite;animation-delay:' + (-(i * SPEED) / CARDS).toFixed(2) + 's"><img src="' + src + '" alt="" decoding="async" draggable="false"></div>';
       }
     });
+    setTimeout(function () {
+      var cardsEls = document.querySelectorAll(".hg-card"), slots = cardsEls.length;
+      Array.prototype.forEach.call(cardsEls, function (c, n) {
+        var loop = 0;
+        c.addEventListener("animationiteration", function () { loop++; c.querySelector("img").src = STREAM_IMAGES[(n + loop * slots) % STREAM_IMAGES.length]; });
+      });
+    }, 0);
     return '<div class="hg-stream" aria-hidden="true"><div class="hg-stream-persp" style="perspective:' + CP.perspective + 'cqw;perspective-origin:50% ' + AXIS + '%"><div class="hg-stream-stage">' + cards + '</div></div></div>';
   }
 
