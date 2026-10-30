@@ -9,7 +9,47 @@
   var isHome = document.body.dataset.page === "home";
   // The name badge in the header calls this to replay the opening screen.
   window.showIntro = function () { if (!document.querySelector(".hg-intro")) run(); };
-  if (isHome && (!ss.get("introSeen") || forced)) run();
+
+
+  // --- image corridor (port of "ImageStreamHero"): two mirrored rails of
+  // portfolio photos flying from a vanishing point toward the viewer ---
+  var STREAM_IMAGES = [
+    "images/intro/field-farmers.jpg", "images/publications/ipadi-eja-2027-thumb.jpg", "images/intro/wwc-poster.jpg",
+    "images/events/pcci-stakeholder-workshop-2026-1-thumb.jpg", "images/projects/p1-arboriculture-tadla-thumb.jpg", "images/intro/wwc-award.jpg",
+    "images/events/iahr-africa-2024-1-thumb.jpg", "images/publications/trees-srs-2026-thumb.jpg", "images/intro/water-day-award.jpg",
+    "images/events/doukkala-survey-2025-2-thumb.jpg", "images/projects/p3-ipadi-doukkala-thumb.jpg", "images/intro/field-canal.jpg",
+    "images/events/roy-visit-2025-2-thumb.jpg", "images/publications/hdci-jhrs-2025-thumb.jpg", "images/events/rive-symposium-2026-thumb.jpg",
+    "images/events/um6p-agroparistech-2025-3-thumb.jpg", "images/publications/propagation-rs-2025-thumb.jpg", "images/events/geophysics-ert-2a-thumb.jpg"
+  ];
+  var CP = { perspective: 30, cardWidth: 18, cardHeight: 25, cardRadius: 0.6, birthHeight: 2.6, exitHeight: 46, railBirth: -11, railExit: 44, fan: 3.3, turnBirth: 6, turnExit: 28, stops: 24 };
+  var CARDS = 9, SPEED = 22, AXIS = 52;
+  function corridorKeyframes(dir, name) {
+    var out = [];
+    for (var k = 0; k <= CP.stops; k++) {
+      var u = k / CP.stops;
+      var scale = (CP.birthHeight / CP.cardHeight) * Math.pow(CP.exitHeight / CP.birthHeight, u);
+      var z = CP.perspective * (1 - 1 / scale);
+      var rail = CP.railExit - (CP.railExit - CP.railBirth) * Math.pow(1 - u, CP.fan);
+      var turn = CP.turnBirth + (CP.turnExit - CP.turnBirth) * u;
+      out.push((u * 100).toFixed(2) + "%{transform:translate3d(" + (dir * rail).toFixed(2) + "cqw,0," + z.toFixed(2) + "cqw) rotateY(" + (-dir * turn).toFixed(2) + "deg)}");
+    }
+    return "@keyframes " + name + "{" + out.join("") + "}";
+  }
+  function streamHtml() {
+    if (!document.getElementById("hgStreamCss")) {
+      var st = document.createElement("style"); st.id = "hgStreamCss";
+      st.textContent = corridorKeyframes(1, "hgRailR") + corridorKeyframes(-1, "hgRailL") + "@media(prefers-reduced-motion:reduce){.hg-card{animation-play-state:paused!important}}";
+      document.head.appendChild(st);
+    }
+    var cards = "";
+    ["hgRailR", "hgRailL"].forEach(function (rail, r) {
+      for (var i = 0; i < CARDS; i++) {
+        var src = STREAM_IMAGES[(i * 2 + r) % STREAM_IMAGES.length];
+        cards += '<div class="hg-card" style="left:50%;top:' + AXIS + '%;width:' + CP.cardWidth + 'cqw;height:' + CP.cardHeight + 'cqw;margin-left:' + (-CP.cardWidth / 2) + 'cqw;margin-top:' + (-CP.cardHeight / 2) + 'cqw;border-radius:' + CP.cardRadius + 'cqw;animation:' + rail + ' ' + SPEED + 's linear infinite;animation-delay:' + (-(i * SPEED) / CARDS).toFixed(2) + 's"><img src="' + src + '" alt="" decoding="async" draggable="false"></div>';
+      }
+    });
+    return '<div class="hg-stream" aria-hidden="true"><div class="hg-stream-persp" style="perspective:' + CP.perspective + 'cqw;perspective-origin:50% ' + AXIS + '%"><div class="hg-stream-stage">' + cards + '</div></div></div>';
+  }
 
   function run() {
 
@@ -36,6 +76,7 @@
   el.innerHTML =
     '<div class="hg-noise"></div>' +
     '<div class="hg-orbs" aria-hidden="true"><i></i><i></i></div>' +
+    streamHtml() +
     '<div class="hg-grid">' +
       layer("hgBase", "rgba(255,255,255,0.05)", 1) +
       '<div class="hg-mask">' + layer("hgHi", "rgba(255,255,255,0.22)", 1) +
@@ -243,4 +284,5 @@
   });
   setTimeout(function () { try { btn.focus({ preventScroll: true }); } catch (e) {} }, 400);
   }
+  if (isHome && (!ss.get("introSeen") || forced)) run();
 })();
