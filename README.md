@@ -27,6 +27,7 @@ Deployed with GitHub Pages from the `main` branch of this repository (`sabir-ous
 | `events.html` | Events with photo, date, place, role and description; photo galleries in the lightbox; images in `images/events/` (`events` in `js/data.js`) |
 | `references.html` | Professors to contact for a reference: name, status, institution, email and phone (`references` in `js/data.js`) |
 | `contact.html` | Contact details and a message form; messages are delivered to sabiroussaoui11@gmail.com through Web3Forms when `web3formsKey` is set in `js/data.js`, otherwise FormSubmit; if the service fails, the visitor gets a pre-filled email link |
+| `signature.html` | Email signature (not linked in the menu): preview, one-click copy and setup steps for Gmail and Outlook; photo in `images/signature/` |
 
 ## Edit the content
 

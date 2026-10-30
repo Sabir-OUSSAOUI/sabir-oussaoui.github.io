@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Email Signature - Sabir Oussaoui</title>
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<style>
+  :root{--bg:#121212;--card:#1E1B26;--fg:#F8FAFC;--muted:#94A3B8;--purple:#8B5CF6;--gold:#FBBF24}
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(135deg,#121212 0%,#1E1B26 50%,#2A1B38 100%) fixed;color:var(--fg);font:15px/1.6 Montserrat,system-ui,Segoe UI,Arial,sans-serif;padding:40px 16px}
+  main{max-width:820px;margin:0 auto}
+  h1{font-size:32px;margin:0 0 6px}
+  p.lede{color:var(--muted);margin:0 0 28px}
+  .preview{background:#fff;border-radius:16px;padding:28px;border:1px solid rgba(139,92,246,.4);overflow-x:auto}
+  .label{font:700 12px Montserrat,Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin:30px 0 10px}
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+  button{font:600 15px Montserrat,Arial,sans-serif;border-radius:999px;padding:12px 22px;cursor:pointer;border:2px solid var(--gold);background:var(--gold);color:#121212}
+  button.ghost{background:transparent;color:var(--fg);border-color:rgba(248,250,252,.6)}
+  .ok{color:#4ade80;font-weight:600;align-self:center;min-height:1em}
+  ol{color:var(--fg);padding-left:20px}ol li{margin:6px 0}ol b{color:var(--gold)}
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .steps>div{background:var(--card);border:1px solid rgba(139,92,246,.3);border-radius:14px;padding:16px 20px}
+  .steps h3{margin:0 0 6px;font-size:16px}
+  @media (max-width:640px){.steps{grid-template-columns:1fr}.preview{padding:16px}}
+</style>
+</head>
+<body>
+<main>
+  <h1>Email signature</h1>
+  <p class="lede">Built from the portfolio: same photo, purple and gold palette, and links. Copy it once, then paste it into Gmail or Outlook.</p>
+
+  <div class="label">Full signature</div>
+  <div class="preview" id="sigFull">
+<!-- SIGNATURE START -->
+<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#121212;">
+  <tr>
+    <td style="padding:0 18px 0 0;vertical-align:middle;">
+      <a href="https://sabiroussaoui.me" style="text-decoration:none;"><img src="https://sabiroussaoui.me/images/signature/photo.png" width="96" height="96" alt="Sabir OUSSAOUI" style="display:block;width:96px;height:96px;border:0;border-radius:50%;"></a>
+    </td>
+    <td style="padding:0 0 0 18px;vertical-align:middle;border-left:3px solid #FBBF24;">
+      <div style="font-size:19px;line-height:24px;font-weight:bold;color:#121212;">Sabir OUSSAOUI</div>
+      <div style="font-size:13px;line-height:20px;font-weight:bold;color:#5B21B6;padding-top:2px;">PhD Researcher &middot; Remote Sensing, AI &amp; Drought</div>
+      <div style="font-size:12px;line-height:18px;color:#475569;padding-top:6px;">UM6P &ndash; International Water Research Institute (IWRI), Ben Guerir, Morocco</div>
+      <div style="font-size:12px;line-height:18px;color:#475569;">UQTR &ndash; Centre de recherche RIVE, Trois-Rivi&egrave;res, Canada</div>
+      <div style="font-size:12px;line-height:18px;padding-top:8px;">
+        <a href="mailto:Sabir.OUSSAOUI@um6p.ma" style="color:#121212;text-decoration:none;">Sabir.OUSSAOUI@um6p.ma</a>
+        <span style="color:#FBBF24;">&nbsp;|&nbsp;</span>
+        <a href="https://sabiroussaoui.me" style="color:#5B21B6;text-decoration:none;font-weight:bold;">sabiroussaoui.me</a>
+      </div>
+      <div style="font-size:12px;line-height:18px;padding-top:4px;">
+        <a href="https://www.linkedin.com/in/sabir-oussaoui/" style="color:#5B21B6;text-decoration:none;font-weight:bold;">LinkedIn</a>
+        <span style="color:#94A3B8;">&nbsp;&middot;&nbsp;</span>
+        <a href="https://scholar.google.com/citations?user=mRgV_v4AAAAJ&amp;hl=en" style="color:#5B21B6;text-decoration:none;font-weight:bold;">Google Scholar</a>
+        <span style="color:#94A3B8;">&nbsp;&middot;&nbsp;</span>
+        <a href="https://www.researchgate.net/profile/Sabir-Oussaoui" style="color:#5B21B6;text-decoration:none;font-weight:bold;">ResearchGate</a>
+      </div>
+    </td>
+  </tr>
+</table>
+<!-- SIGNATURE END -->
+  </div>
+  <div class="row"><button data-copy="sigFull">Copy full signature</button><span class="ok" id="okFull"></span></div>
+
+  <div class="label">Short version (for replies)</div>
+  <div class="preview" id="sigShort">
+<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,Helvetica,sans-serif;color:#121212;">
+  <tr>
+    <td style="padding:0 0 0 12px;border-left:3px solid #FBBF24;">
+      <div style="font-size:14px;line-height:20px;font-weight:bold;color:#121212;">Sabir OUSSAOUI</div>
+      <div style="font-size:12px;line-height:18px;color:#5B21B6;font-weight:bold;">PhD Researcher &middot; UM6P-IWRI &amp; UQTR-RIVE</div>
+      <div style="font-size:12px;line-height:18px;"><a href="https://sabiroussaoui.me" style="color:#5B21B6;text-decoration:none;">sabiroussaoui.me</a></div>
+    </td>
+  </tr>
+</table>
+  </div>
+  <div class="row"><button data-copy="sigShort">Copy short version</button><span class="ok" id="okShort"></span></div>
+
+  <div class="label">How to install it</div>
+  <div class="steps">
+    <div><h3>Gmail</h3><ol>
+      <li>Click <b>Copy full signature</b>.</li>
+      <li>Gmail: gear icon, <b>See all settings</b>, <b>General</b>, <b>Signature</b>.</li>
+      <li><b>Create new</b>, paste (Ctrl+V) in the box.</li>
+      <li>Scroll down and click <b>Save Changes</b>.</li></ol></div>
+    <div><h3>Outlook (UM6P)</h3><ol>
+      <li>Click <b>Copy full signature</b>.</li>
+      <li>Outlook web: gear icon, <b>Mail</b>, <b>Compose and reply</b>.</li>
+      <li><b>New signature</b>, give it a name, paste.</li>
+      <li>Choose it as default for new messages, then <b>Save</b>.</li></ol></div>
+  </div>
+</main>
+<script>
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", async function () {
+      var box = document.getElementById(b.dataset.copy), ok = b.nextElementSibling, html = box.innerHTML.trim(), text = box.innerText.trim();
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([text], { type: "text/plain" }) })]);
+      } catch (e) {
+        var r = document.createRange(); r.selectNodeContents(box); var s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand("copy"); s.removeAllRanges();
+      }
+      ok.textContent = "Copied. Now paste it into your email settings.";
+      setTimeout(function () { ok.textContent = ""; }, 4000);
+    });
+  });
+</script>
+</body>
+</html>
