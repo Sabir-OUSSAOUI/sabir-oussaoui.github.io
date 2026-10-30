@@ -15,7 +15,7 @@ window.SITE = {
   // Contact form delivery. If web3formsKey is set (free key from web3forms.com, sent to the Gmail below),
   // Web3Forms is used; otherwise FormSubmit. If the service fails, the visitor's email app opens pre-filled.
   formEmail: "sabiroussaoui11@gmail.com",
-  web3formsKey: "",
+  web3formsKey: "5b708af6-da88-4882-a3ca-df88ce1e84ad",
   formEndpoint: "https://formsubmit.co/ajax/sabiroussaoui11@gmail.com",
 
   i18n: {
