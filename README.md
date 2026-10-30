@@ -57,3 +57,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 ## Still to supply
 
 - Nothing pending.
+
+## Earth background
+
+`js/earth-bg.js` draws a WebGL Earth horizon (stars, nebula, sunlit limb) behind every page in dark mode, which is the default theme. Moving the mouse guides the sunlight along the horizon. It is a plain JavaScript port of the "Earth Blaze" component; the Earth texture `images/earth-texture.jpg` is NASA Blue Marble (public domain). Light mode keeps the plain background. Visitors who prefer reduced motion get a still image.

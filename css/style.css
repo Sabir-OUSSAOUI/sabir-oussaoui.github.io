@@ -25,6 +25,11 @@ html.dark{
   --line:rgba(245,245,245,.18);
   --card:#111111;
 }
+/* Earth horizon background (js/earth-bg.js), dark mode only */
+#earthBg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;display:none;pointer-events:none}
+html.dark.has-earth{background:#000}
+html.dark.has-earth #earthBg{display:block}
+html.dark.has-earth body{background:transparent}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{margin:0;font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}

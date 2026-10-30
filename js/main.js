@@ -5,7 +5,7 @@
 
   /* ---- theme (light / dark), persisted ---- */
   const root = document.documentElement;
-  const savedTheme = LS.get("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  const savedTheme = LS.get("theme") || "dark";
   root.classList.toggle("dark", savedTheme === "dark");
   function toggleTheme() { const dark = root.classList.toggle("dark"); LS.set("theme", dark ? "dark" : "light"); renderThemeIcon(); }
 
