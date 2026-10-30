@@ -38,12 +38,16 @@
     '</div>' +
     '<div class="hg-flash"></div><div class="hg-dodge"></div>' +
     '<div class="hg-content">' +
-      '<div class="hg-item hg-badge"><span class="hg-dot"><i></i><b></b></span>' + TXT.badge + '</div>' +
-      '<h1 class="hg-item hg-name">Sabir <span>OUSSAOUI</span></h1>' +
-      '<p class="hg-item hg-sub">' + TXT.sub + '</p>' +
-      '<div class="hg-item hg-cta"><button type="button" class="hg-btn"><span>' + TXT.enter + '</span>' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg><em></em></button>' +
-      '<p class="hg-hint">' + TXT.hint + '</p></div>' +
+      '<div class="hg-text">' +
+        '<div class="hg-item hg-badge"><span class="hg-dot"><i></i><b></b></span>' + TXT.badge + '</div>' +
+        '<h1 class="hg-item hg-name">Sabir <br><span>OUSSAOUI</span></h1>' +
+        '<p class="hg-item hg-sub">' + TXT.sub + '</p>' +
+        '<div class="hg-item hg-cta"><button type="button" class="hg-btn"><span>' + TXT.enter + '</span>' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg><em></em></button>' +
+        '<p class="hg-hint">' + TXT.hint + '</p></div>' +
+      '</div>' +
+      '<div class="hg-item hg-figure"><canvas class="hg-globe" aria-hidden="true"></canvas>' +
+        '<img class="hg-photo" src="images/profile/intro-cutout.webp" alt="Sabir OUSSAOUI" width="1038" height="1400" decoding="async"></div>' +
     '</div>';
   document.body.appendChild(el);
   document.documentElement.classList.add("hg-lock");
@@ -71,6 +75,103 @@
     vel = [e.clientX - prev[0], e.clientY - prev[1]];
     mouse = [e.clientX, e.clientY]; prev = [e.clientX, e.clientY];
   });
+
+
+  // --- network globe behind the portrait (2D canvas, projected 3D) ---
+  var gc = el.querySelector(".hg-globe"), g2 = gc.getContext("2d");
+  var seed = 7, rnd = function () { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  var nodes = [];
+  for (var k = 0; k < 26; k++) {
+    var u = rnd() * 2 - 1, th = rnd() * Math.PI * 2, rr = Math.sqrt(1 - u * u);
+    nodes.push([rr * Math.cos(th), u, rr * Math.sin(th), 0.6 + rnd() * 0.9]);
+  }
+  var links = [];
+  for (var a1 = 0; a1 < nodes.length; a1++) for (var b1 = a1 + 1; b1 < nodes.length; b1++) {
+    var dx = nodes[a1][0] - nodes[b1][0], dy = nodes[a1][1] - nodes[b1][1], dz = nodes[a1][2] - nodes[b1][2];
+    if (dx * dx + dy * dy + dz * dz < 0.55) links.push([a1, b1]);
+  }
+  var dust = [];
+  for (var k2 = 0; k2 < 260; k2++) { var u2 = rnd() * 2 - 1, t2 = rnd() * Math.PI * 2, r2 = Math.sqrt(1 - u2 * u2); dust.push([r2 * Math.cos(t2), u2, r2 * Math.sin(t2)]); }
+  var rings = [[1.32, 0.42, 0.3], [1.5, -0.62, 1.4], [1.18, 1.15, 2.2]]; // radius, tilt, phase
+  var gw = 0, gh = 0, gdpr = 1, spin = 0.6;
+  function sizeGlobe() {
+    gdpr = Math.min(devicePixelRatio || 1, 2);
+    gw = gc.clientWidth; gh = gc.clientHeight;
+    gc.width = Math.round(gw * gdpr); gc.height = Math.round(gh * gdpr);
+  }
+  function rotP(p, ay, ax) {
+    var x = p[0] * Math.cos(ay) + p[2] * Math.sin(ay), z = -p[0] * Math.sin(ay) + p[2] * Math.cos(ay);
+    var y = p[1] * Math.cos(ax) - z * Math.sin(ax); z = p[1] * Math.sin(ax) + z * Math.cos(ax);
+    return [x, y, z];
+  }
+  function drawGlobe(t) {
+    if (!gw) return;
+    var R = Math.min(gw * 0.42, gh * 0.4), cx = gw * 0.5, cy = gh * 0.42;
+    var ay = spin + t * 0.12 + (rot[1] || 0) * 0.02, ax = -0.32 + (rot[0] || 0) * 0.015;
+    var P = function (p) { var q = rotP(p, ay, ax); return [cx + q[0] * R, cy - q[1] * R, q[2]]; };
+    g2.setTransform(gdpr, 0, 0, gdpr, 0, 0);
+    g2.clearRect(0, 0, gw, gh);
+    var glow = g2.createRadialGradient(cx, cy, R * 0.15, cx, cy, Math.min(R * 1.25, gw * 0.5, gh * 0.42));
+    glow.addColorStop(0, "rgba(70,120,220,.28)"); glow.addColorStop(1, "rgba(70,120,220,0)");
+    g2.fillStyle = glow; g2.fillRect(0, 0, gw, gh);
+    g2.lineWidth = 1;
+    // meridians and parallels
+    for (var m = 0; m < 12; m++) {
+      var lon = m / 12 * Math.PI;
+      g2.beginPath();
+      for (var s1 = 0; s1 <= 48; s1++) {
+        var lat = -Math.PI / 2 + s1 / 48 * Math.PI;
+        var pt = P([Math.cos(lat) * Math.cos(lon), Math.sin(lat), Math.cos(lat) * Math.sin(lon)]);
+        if (s1) g2.lineTo(pt[0], pt[1]); else g2.moveTo(pt[0], pt[1]);
+      }
+      g2.strokeStyle = "rgba(150,180,240,.16)"; g2.stroke();
+    }
+    for (var l = -2; l <= 2; l++) {
+      var la = l * Math.PI / 6;
+      g2.beginPath();
+      for (var s2 = 0; s2 <= 64; s2++) {
+        var lo = s2 / 64 * Math.PI * 2, pt2 = P([Math.cos(la) * Math.cos(lo), Math.sin(la), Math.cos(la) * Math.sin(lo)]);
+        if (s2) g2.lineTo(pt2[0], pt2[1]); else g2.moveTo(pt2[0], pt2[1]);
+      }
+      g2.strokeStyle = "rgba(150,180,240,.14)"; g2.stroke();
+    }
+    // dust
+    for (var d1 = 0; d1 < dust.length; d1++) {
+      var q1 = P(dust[d1]); g2.fillStyle = "rgba(170,200,255," + (q1[2] > 0 ? .35 : .1) + ")";
+      g2.fillRect(q1[0], q1[1], 1.1, 1.1);
+    }
+    // orbit rings with travelling satellites
+    for (var r3 = 0; r3 < rings.length; r3++) {
+      var rg = rings[r3]; g2.beginPath();
+      for (var s3 = 0; s3 <= 96; s3++) {
+        var an = s3 / 96 * Math.PI * 2;
+        var p3 = rotP([Math.cos(an) * rg[0], 0, Math.sin(an) * rg[0]], 0, rg[1]);
+        var q3 = P(p3); if (s3) g2.lineTo(q3[0], q3[1]); else g2.moveTo(q3[0], q3[1]);
+      }
+      g2.strokeStyle = "rgba(160,190,240,.28)"; g2.stroke();
+      var sa2 = rg[2] + t * (0.25 + r3 * 0.08);
+      var sat = P(rotP([Math.cos(sa2) * rg[0], 0, Math.sin(sa2) * rg[0]], 0, rg[1]));
+      g2.shadowColor = "rgba(150,200,255,.9)"; g2.shadowBlur = 14;
+      g2.fillStyle = "rgba(225,238,255," + (sat[2] > 0 ? .95 : .45) + ")";
+      g2.beginPath(); g2.arc(sat[0], sat[1], 3.2, 0, Math.PI * 2); g2.fill(); g2.shadowBlur = 0;
+    }
+    // network links and nodes
+    var pr = nodes.map(P);
+    for (var e1 = 0; e1 < links.length; e1++) {
+      var A = pr[links[e1][0]], B = pr[links[e1][1]], vis = (A[2] + B[2]) / 2;
+      g2.strokeStyle = "rgba(170,205,255," + (vis > 0 ? .5 : .12) + ")";
+      g2.beginPath(); g2.moveTo(A[0], A[1]); g2.lineTo(B[0], B[1]); g2.stroke();
+    }
+    for (var n1 = 0; n1 < pr.length; n1++) {
+      var Q = pr[n1], front = Q[2] > 0, tw = 0.75 + 0.25 * Math.sin(t * 1.6 + n1);
+      g2.shadowColor = "rgba(140,190,255,.95)"; g2.shadowBlur = front ? 16 : 4;
+      g2.fillStyle = "rgba(220,235,255," + (front ? .95 * tw : .3) + ")";
+      g2.beginPath(); g2.arc(Q[0], Q[1], nodes[n1][3] * (front ? 3 : 1.8), 0, Math.PI * 2); g2.fill();
+    }
+    g2.shadowBlur = 0;
+  }
+  sizeGlobe();
+  window.addEventListener("resize", sizeGlobe);
 
   function frame(now) {
     raf = 0;
@@ -108,9 +209,11 @@
     flash.style.opacity = (warp < 0.1 ? warp * 4 : 0.4 * (1 - (warp - 0.1) / 0.9)).toFixed(3);
     dodge.style.opacity = (warp < 0.2 ? warp * 1.5 : warp < 0.8 ? 0.3 * (1 - (warp - 0.2) / 0.6) : 0).toFixed(3);
 
-    if (!leaving || warp > 0.002 || el.isConnected) raf = requestAnimationFrame(frame);
+    drawGlobe(now / 1000);
+    if (el.isConnected) raf = requestAnimationFrame(frame);
   }
   if (!reduced) raf = requestAnimationFrame(frame);
+  else { var img0 = el.querySelector(".hg-photo"); drawGlobe(0); if (img0) img0.addEventListener("load", function () { drawGlobe(0); }); }
 
   function enter() {
     if (leaving) return;
