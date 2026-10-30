@@ -61,3 +61,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 ## Black hole background
 
 `js/space-bg.js` draws a WebGL2 black hole (engraved accretion disk, photon crown, nebula banks, film grain) behind every page in dark mode, which is the default theme. Moving the mouse adds parallax; holding the mouse on an empty area "feeds" the singularity. It is a plain JavaScript port of the "Etched Accretion" component and is fully procedural (no images). Light mode keeps the plain background. Visitors who prefer reduced motion get a still frame, and the resolution lowers itself on slow devices.
+
+## Opening screen
+
+`js/intro.js` (home page only) shows a full-screen opening with the name "Sabir OUSSAOUI" over a moving 3D grid that tilts with the cursor, a plain JavaScript port of the "HyperGrid" component. "Enter the portfolio" (or Enter / Escape) fires the warp effect and fades into the site. It shows once per browser session; add `?intro` to the URL to see it again. The black hole background pauses while it is on screen.

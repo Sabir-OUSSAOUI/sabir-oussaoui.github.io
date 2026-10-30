@@ -370,7 +370,7 @@ void main() {
   }
   function stop() { cancelAnimationFrame(raf); raf = 0; }
 
-  function syncTheme() { visible = root.classList.contains("dark"); if (visible) start(); else stop(); }
+  function syncTheme() { visible = root.classList.contains("dark") && !root.classList.contains("hg-lock"); if (visible) start(); else stop(); }
   new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ["class"] });
   window.addEventListener("resize", function () { if (visible) { resize(); if (reduced) draw(); } });
   document.addEventListener("visibilitychange", function () { if (!document.hidden && visible) start(); else stop(); });
