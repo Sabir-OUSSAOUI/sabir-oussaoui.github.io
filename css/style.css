@@ -467,3 +467,10 @@ html:not(.dark) .ct-mailto{color:#5B21B6!important}
 .hg-in .hg-stream{opacity:.75}
 .hg-stream::after{background:radial-gradient(ellipse 55% 60% at 50% 52%,rgba(18,18,18,0),rgba(18,18,18,.55) 75%),linear-gradient(90deg,rgba(18,18,18,.92) 0%,rgba(18,18,18,.7) 32%,rgba(18,18,18,.15) 60%,rgba(18,18,18,.25) 100%)}
 @media (max-width:900px){.hg-stream::after{background:linear-gradient(180deg,rgba(18,18,18,.2) 0%,rgba(18,18,18,.35) 40%,rgba(18,18,18,.92) 58%,rgba(18,18,18,.95) 100%)}}
+/* opening screen without the portrait: centred text over the photo corridor */
+.hg-figure{display:none}
+.hg-content{grid-template-columns:1fr;justify-items:center}
+.hg-text{align-items:center;text-align:center;max-width:860px}
+.hg-name br{display:none}.hg-name span{display:inline}
+.hg-stream::after{background:radial-gradient(ellipse 46% 52% at 50% 50%,rgba(18,18,18,.88),rgba(18,18,18,.55) 60%,rgba(18,18,18,.2) 100%)}
+@media (max-width:900px){.hg-content{grid-template-rows:auto;padding:0 22px}.hg-stream::after{background:radial-gradient(ellipse 80% 45% at 50% 50%,rgba(18,18,18,.9),rgba(18,18,18,.5) 70%,rgba(18,18,18,.3) 100%)}}

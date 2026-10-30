@@ -62,7 +62,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 
 ## Opening screen
 
-`js/intro.js` shows a full-screen opening: the name "Sabir OUSSAOUI" on the left and the cut-out portrait (`images/profile/intro-cutout.webp`) on the right, over a 3D corridor of portfolio photos and figures flying toward the viewer (port of "ImageStreamHero"; photo list `STREAM_IMAGES` in the script, extra photos in `images/intro/`) and a moving grid that tilts with the cursor, a plain JavaScript port of the "HyperGrid" component. "Enter the portfolio" (or Enter / Escape) fires the warp effect and fades into the site. It shows once per browser session; clicking the name badge in the header (on any page) replays it and returns to Home, and `?intro` in the URL also forces it.
+`js/intro.js` shows a full-screen opening: the name "Sabir OUSSAOUI" centred, over a 3D corridor of portfolio photos and figures flying toward the viewer (port of "ImageStreamHero"; photo list `STREAM_IMAGES` in the script, extra photos in `images/intro/`) and a moving grid that tilts with the cursor, a plain JavaScript port of the "HyperGrid" component. "Enter the portfolio" (or Enter / Escape) fires the warp effect and fades into the site. It shows once per browser session; clicking the name badge in the header (on any page) replays it and returns to Home, and `?intro` in the URL also forces it.
 
 ## Cursor effect
 
