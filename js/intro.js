@@ -14,15 +14,33 @@
   // --- image corridor (port of "ImageStreamHero"): two mirrored rails of
   // portfolio photos flying from a vanishing point toward the viewer ---
   var STREAM_IMAGES = [
-    "images/intro/field-farmers.jpg", "images/publications/ipadi-eja-2027-thumb.jpg", "images/intro/wwc-poster.jpg",
-    "images/events/pcci-stakeholder-workshop-2026-1-thumb.jpg", "images/projects/p1-arboriculture-tadla-thumb.jpg", "images/intro/wwc-award.jpg",
-    "images/events/iahr-africa-2024-1-thumb.jpg", "images/publications/trees-srs-2026-thumb.jpg", "images/intro/water-day-award.jpg",
-    "images/events/doukkala-survey-2025-2-thumb.jpg", "images/projects/p3-ipadi-doukkala-thumb.jpg", "images/intro/field-canal.jpg",
-    "images/events/roy-visit-2025-2-thumb.jpg", "images/publications/hdci-jhrs-2025-thumb.jpg", "images/events/rive-symposium-2026-thumb.jpg",
-    "images/events/um6p-agroparistech-2025-3-thumb.jpg", "images/publications/propagation-rs-2025-thumb.jpg", "images/events/geophysics-ert-2a-thumb.jpg"
+    "images/intro/field-farmers.jpg",
+    "images/publications/ipadi-eja-2027-thumb.jpg",
+    "images/intro/hackathon-poster.jpg",
+    "images/intro/wwc-poster.jpg",
+    "images/events/pcci-stakeholder-workshop-2026-1-thumb.jpg",
+    "images/projects/p1-arboriculture-tadla-thumb.jpg",
+    "images/intro/um6p-campus.jpg",
+    "images/intro/wwc-award.jpg",
+    "images/events/iahr-africa-2024-1-thumb.jpg",
+    "images/publications/trees-srs-2026-thumb.jpg",
+    "images/intro/geophysics-team.jpg",
+    "images/intro/water-day-award.jpg",
+    "images/events/doukkala-survey-2025-2-thumb.jpg",
+    "images/projects/p3-ipadi-doukkala-thumb.jpg",
+    "images/intro/farmer-interview.jpg",
+    "images/intro/field-canal.jpg",
+    "images/events/roy-visit-2025-1-thumb.jpg",
+    "images/publications/hdci-jhrs-2025-thumb.jpg",
+    "images/events/rive-symposium-2026-thumb.jpg",
+    "images/events/um6p-agroparistech-2025-3-thumb.jpg",
+    "images/publications/propagation-rs-2025-thumb.jpg",
+    "images/events/geophysics-ert-2a-thumb.jpg",
+    "images/publications/dam-forecasting-jhrs-2026-thumb.jpg",
+    "images/events/msc-defense-angoue-1-thumb.jpg"
   ];
   var CP = { perspective: 30, cardWidth: 18, cardHeight: 25, cardRadius: 0.6, birthHeight: 2.6, exitHeight: 46, railBirth: -11, railExit: 44, fan: 3.3, turnBirth: 6, turnExit: 28, stops: 24 };
-  var CARDS = 9, SPEED = 22, AXIS = 52;
+  var CARDS = 12, SPEED = 26, AXIS = 52;
   function corridorKeyframes(dir, name) {
     var out = [];
     for (var k = 0; k <= CP.stops; k++) {
@@ -44,7 +62,7 @@
     var cards = "";
     ["hgRailR", "hgRailL"].forEach(function (rail, r) {
       for (var i = 0; i < CARDS; i++) {
-        var src = STREAM_IMAGES[(i * 2 + r) % STREAM_IMAGES.length];
+        var src = STREAM_IMAGES[(i * 2 + r) % STREAM_IMAGES.length]; // 2 rails x CARDS = each photo once
         cards += '<div class="hg-card" style="left:50%;top:' + AXIS + '%;width:' + CP.cardWidth + 'cqw;height:' + CP.cardHeight + 'cqw;margin-left:' + (-CP.cardWidth / 2) + 'cqw;margin-top:' + (-CP.cardHeight / 2) + 'cqw;border-radius:' + CP.cardRadius + 'cqw;animation:' + rail + ' ' + SPEED + 's linear infinite;animation-delay:' + (-(i * SPEED) / CARDS).toFixed(2) + 's"><img src="' + src + '" alt="" decoding="async" draggable="false"></div>';
       }
     });
