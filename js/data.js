@@ -108,7 +108,7 @@ window.SITE = {
     { name: "Ismail KARAOUI", photo: "karaoui", status: { en: "Assistant Professor", fr: "Professeur assistant" }, inst: "FST Beni Mellal - USMS, Morocco", email: "i.karaoui@usms.ma", phone: "+212 642-665908" }
   ],
   events: [
-    { date: "2023-06", place: "FST Beni Mellal (USMS), Morocco", role: { en: "Trainer & field support", fr: "Formateur et appui terrain" },
+    { date: "2023-07", place: "FST Beni Mellal (USMS), Morocco", role: { en: "Trainer & field support", fr: "Formateur et appui terrain" },
       title: { en: "DJI Phantom 4 RTK drone training for ITGA continuing-education students", fr: "Formation drone DJI Phantom 4 RTK pour les étudiants de la formation continue ITGA" },
       desc: { en: "At USMS I helped collect field data and trained the ITGA continuing-education students in drone surveying with the DJI Phantom 4 RTK, with photogrammetric restitution as the goal.\n\nGround control points were measured with a STONEX S9III PLUS GNSS receiver, flights were planned and flown over the campus area, and the images were processed in Agisoft Metashape to produce a dense point cloud, a digital surface model and a 1.67 cm orthomosaic.",
               fr: "À l'USMS, j'ai aidé à la collecte des données de terrain et formé les étudiants de la formation continue ITGA au levé par drone DJI Phantom 4 RTK, avec pour objectif la restitution photogrammétrique.\n\nLes points d'appui (GCP) ont été relevés au GPS STONEX S9III PLUS, les vols planifiés et réalisés sur le site, puis les images traitées sous Agisoft Metashape pour produire un nuage de points dense, un modèle numérique de surface et une orthomosaïque à 1,67 cm." },
