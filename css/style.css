@@ -452,3 +452,4 @@ html.dark{background:#121212}
 html.dark .ct-field input:-webkit-autofill,html.dark .ct-field input:-webkit-autofill:hover,html.dark .ct-field input:-webkit-autofill:focus{-webkit-text-fill-color:#F8FAFC;-webkit-box-shadow:0 0 0 1000px #121212 inset;caret-color:#F8FAFC;transition:background-color 9999s}
 .ct-mailto{display:inline-block;margin-left:6px;font-weight:700;color:var(--gold)!important;text-decoration:underline}
 html:not(.dark) .ct-mailto{color:#5B21B6!important}
+.hero-img img[src*="hero-iahr"]{object-position:52% 45%}
