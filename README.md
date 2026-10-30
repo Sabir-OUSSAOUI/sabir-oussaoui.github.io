@@ -26,7 +26,7 @@ Deployed with GitHub Pages from the `main` branch of this repository (`sabir-ous
 | `certificates.html` | 27 certificates (awards, conferences, training, teaching) with category filter and lightbox; images in `images/certificates/` |
 | `events.html` | Events with photo, date, place, role and description; photo galleries in the lightbox; images in `images/events/` (`events` in `js/data.js`) |
 | `references.html` | Professors to contact for a reference: name, status, institution, email and phone (`references` in `js/data.js`) |
-| `contact.html` | Contact details and a message form; messages are delivered by email through FormSubmit (`formEndpoint` in `js/data.js`) |
+| `contact.html` | Contact details and a message form; messages are delivered by email to sabiroussaoui11@gmail.com through FormSubmit (`formEndpoint` in `js/data.js`) |
 
 ## Edit the content
 

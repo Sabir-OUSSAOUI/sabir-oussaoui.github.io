@@ -13,7 +13,7 @@ window.SITE = {
   },
   cvFile: "files/CV_OUSSAOUI.pdf",
   // Contact form delivery (FormSubmit). The first message triggers a one-time activation email to this address.
-  formEndpoint: "https://formsubmit.co/ajax/sabir.oussaoui@um6p.ma",
+  formEndpoint: "https://formsubmit.co/ajax/sabiroussaoui11@gmail.com",
 
   i18n: {
     en: {
