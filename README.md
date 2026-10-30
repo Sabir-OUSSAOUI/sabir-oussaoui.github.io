@@ -58,6 +58,6 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 
 - Nothing pending.
 
-## Earth background
+## Black hole background
 
-`js/earth-bg.js` draws a WebGL Earth horizon (stars, nebula, sunlit limb) behind every page in dark mode, which is the default theme. Moving the mouse guides the sunlight along the horizon. It is a plain JavaScript port of the "Earth Blaze" component; the Earth texture `images/earth-texture.jpg` is NASA Blue Marble (public domain). Light mode keeps the plain background. Visitors who prefer reduced motion get a still image.
+`js/space-bg.js` draws a WebGL2 black hole (engraved accretion disk, photon crown, nebula banks, film grain) behind every page in dark mode, which is the default theme. Moving the mouse adds parallax; holding the mouse on an empty area "feeds" the singularity. It is a plain JavaScript port of the "Etched Accretion" component and is fully procedural (no images). Light mode keeps the plain background. Visitors who prefer reduced motion get a still frame, and the resolution lowers itself on slow devices.
