@@ -331,10 +331,17 @@
       const d = Object.fromEntries(new FormData(form));
       if (d._honey) return;
       btn.disabled = true; btn.textContent = t.ctSending; status.className = "ct-status"; status.textContent = "";
+      const subject = `Portfolio message from ${d.first} ${d.last}${d.subject ? " - " + d.subject : ""}`;
+      const mailto = () => `mailto:${S.formEmail || S.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.first} ${d.last}\n${d.email}`)}`;
       try {
-        const r = await fetch(S.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify({ name: `${d.first} ${d.last}`.trim(), email: d.email, subject: d.subject || "-", message: d.message,
-            _subject: `Portfolio message from ${d.first} ${d.last}${d.subject ? " - " + d.subject : ""}`, _replyto: d.email, _template: "table", _captcha: "false" }) });
+        let r;
+        if (S.web3formsKey) {
+          r = await fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({ access_key: S.web3formsKey, subject, from_name: "Portfolio sabiroussaoui.me", name: `${d.first} ${d.last}`.trim(), email: d.email, replyto: d.email, topic: d.subject || "-", message: d.message, botcheck: "" }) });
+        } else {
+          r = await fetch(S.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({ name: `${d.first} ${d.last}`.trim(), email: d.email, subject: d.subject || "-", message: d.message, _subject: subject, _replyto: d.email, _template: "table", _captcha: "false" }) });
+        }
         const j = await r.json().catch(() => ({}));
         if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || String(r.status));
         form.reset(); status.classList.add("ok"); status.textContent = t.ctOk;
@@ -342,7 +349,7 @@
         const msg = String((err && err.message) || "");
         console.warn("contact form:", msg);
         if (/activat/i.test(msg)) { status.classList.add("warn"); status.textContent = t.ctActivate; }
-        else { status.classList.add("err"); status.innerHTML = `${esc(t.ctErr)} <a href="mailto:${esc(S.email)}">${esc(S.email)}</a>.`; }
+        else { status.classList.add("warn"); status.innerHTML = `${esc(t.ctFallback)} <a class="ct-mailto" href="${mailto()}">${esc(t.ctFallbackBtn)} ↗</a>`; }
       } finally { btn.disabled = false; btn.textContent = t.ctSend; }
     });
   }
