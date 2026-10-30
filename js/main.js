@@ -293,7 +293,6 @@
         <p class="mono ref-inst">${esc(r.inst)}</p>
         <div class="ref-contact">
           <a href="mailto:${esc(r.email)}?subject=${encodeURIComponent("Reference - Sabir OUSSAOUI")}" aria-label="${esc(t.refEmail)} ${esc(r.name)}">${ICONS.mail}<span>${esc(r.email)}</span></a>
-          <a href="tel:${esc(r.phone.replace(/[^+\d]/g, ""))}" aria-label="${esc(t.refPhone)} ${esc(r.name)}">${ICONS.phone}<span>${esc(r.phone)}</span></a>
         </div>
       </article>`).join("");
     observeReveals();
