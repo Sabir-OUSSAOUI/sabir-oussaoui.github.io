@@ -69,3 +69,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 ## Cursor effect
 
 `js/splash-cursor.js` adds a fluid "ink" trail that follows the mouse on every page, with a splash on click. It is a plain JavaScript port of the "SplashCursor" WebGL2 fluid simulation, coloured with the site palette (cyan `#55dde0`, blue `#4f8cff`, green `#8fcb9b`). It never blocks clicks, adapts to light mode, and is skipped on touch-only devices and for visitors who prefer reduced motion.
+
+## Navigation
+
+Links between pages are handled in `js/main.js` without a full reload: the new page's `<main>` is fetched and swapped in with a short fade, so the header, background and cursor effect keep running and nothing flashes. Back/forward buttons work, and if anything fails the browser falls back to a normal page load.

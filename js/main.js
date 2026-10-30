@@ -18,7 +18,7 @@
   const $ = (sel, el = document) => el.querySelector(sel);
   const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const page = document.body.dataset.page;
+  let page = document.body.dataset.page;
 
   const ICONS = {
     linkedin: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.3 8h4.4v14H.3V8zm7.5 0h4.2v1.9h.1c.6-1.1 2-2.3 4.2-2.3 4.5 0 5.3 3 5.3 6.8V22h-4.4v-6.7c0-1.6 0-3.7-2.2-3.7s-2.6 1.7-2.6 3.6V22H7.8V8z"/></svg>',
@@ -238,6 +238,10 @@
   }
   function stepLb(d) { if (lbImgs.length < 2) return; lbIdx = (lbIdx + d + lbImgs.length) % lbImgs.length; showLb(); }
   function closeLightbox() { const lb = $("#lightbox"); lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+  // Every page gets the lightbox so content swapped in by soft navigation can use it.
+  if (!$("#lightbox")) {
+    document.body.insertAdjacentHTML("beforeend", '<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lbCap"><figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:100%"><div class="lb-stage"><button class="lb-nav" id="lbPrev" aria-label="Previous image">&#8249;</button><img id="lbImg" src="" alt=""><button class="lb-nav" id="lbNext" aria-label="Next image">&#8250;</button></div><figcaption id="lbCap"></figcaption></figure><button class="btn" id="lbClose">Close</button></div>');
+  }
   if ($("#lightbox")) {
     $("#lbClose").addEventListener("click", closeLightbox);
     $("#lightbox").addEventListener("click", (e) => { if (e.target === e.currentTarget) closeLightbox(); });
@@ -293,6 +297,58 @@
     observeReveals(); timelineRails();
   }
 
+
+  /* ---- soft navigation: swap the page content without reloading, so the
+     background, cursor and header stay put and nothing flashes ---- */
+  const cache = new Map();
+  function fetchPage(url) {
+    if (!cache.has(url)) cache.set(url, fetch(url, { credentials: "same-origin" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); }).catch((e) => { cache.delete(url); throw e; }));
+    return cache.get(url);
+  }
+  let navigating = false;
+  async function softGo(url, push) {
+    if (navigating) return;
+    navigating = true;
+    const main = $("main");
+    main.classList.add("page-leave");
+    try {
+      const [html] = await Promise.all([fetchPage(url), new Promise((r) => setTimeout(r, 180))]);
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const next = doc.querySelector("main");
+      const nextPage = doc.body.dataset.page;
+      if (!next || !nextPage) throw new Error("bad page");
+      if (push) history.pushState({ soft: true }, "", url);
+      document.title = doc.title;
+      document.body.dataset.page = page = nextPage;
+      $$(".hireme").forEach((n) => n.remove());
+      const hire = doc.querySelector(".hireme");
+      main.replaceWith(next);
+      if (hire) next.after(hire);
+      if ($("#lightbox").classList.contains("open")) closeLightbox();
+      document.body.style.overflow = "";
+      window.scrollTo(0, 0);
+      next.classList.add("page-enter");
+      renderAll();
+      requestAnimationFrame(() => requestAnimationFrame(() => next.classList.remove("page-enter")));
+    } catch (e) {
+      location.href = url;
+    } finally { navigating = false; }
+  }
+  if (location.protocol !== "file:") {
+    history.replaceState({ soft: true }, "");
+    document.addEventListener("click", (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest && e.target.closest("a[href]");
+      if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+      const url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || !/(\.html|\/)$/.test(url.pathname) || url.search.includes("intro")) return;
+      e.preventDefault();
+      if (url.pathname === location.pathname && !url.hash) { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+      softGo(url.href, true);
+    });
+    document.addEventListener("pointerover", (e) => { const a = e.target.closest && e.target.closest("a.nl[href], a.logo[href]"); if (a) fetchPage(new URL(a.href, location.href).href).catch(() => {}); }, { passive: true });
+    window.addEventListener("popstate", () => softGo(location.href, false));
+  }
   document.documentElement.lang = lang;
   window.addEventListener("scroll", () => { const h = $("#header"); if (h) h.classList.toggle("scrolled", window.scrollY > 8); }, { passive: true });
   const padForHeader = () => { const h = $("#header"); if (h) document.body.style.paddingTop = h.offsetHeight + "px"; };
