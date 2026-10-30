@@ -65,3 +65,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 ## Opening screen
 
 `js/intro.js` (home page only) shows a full-screen opening: the name "Sabir OUSSAOUI" on the left, the portrait (`images/profile/intro-cutout.webp`, background removed) in front of a rotating network globe on the right, over a moving 3D grid that tilts with the cursor, a plain JavaScript port of the "HyperGrid" component. "Enter the portfolio" (or Enter / Escape) fires the warp effect and fades into the site. It shows once per browser session; add `?intro` to the URL to see it again. The black hole background pauses while it is on screen.
+
+## Cursor effect
+
+`js/splash-cursor.js` adds a fluid "ink" trail that follows the mouse on every page, with a splash on click. It is a plain JavaScript port of the "SplashCursor" WebGL2 fluid simulation, coloured with the site palette (cyan `#55dde0`, blue `#4f8cff`, green `#8fcb9b`). It never blocks clicks, adapts to light mode, and is skipped on touch-only devices and for visitors who prefer reduced motion.

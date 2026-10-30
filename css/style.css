@@ -358,3 +358,7 @@ html.hg-lock,html.hg-lock body{overflow:hidden}
 .hg-in .hg-figure{transition-delay:.6s}
 @media (max-width:900px){.hg-content{grid-template-columns:1fr;grid-template-rows:minmax(0,46%) auto;padding:0 22px 28px;gap:0}.hg-figure{order:-1}.hg-photo{height:100%}.hg-text{gap:16px;align-items:center;text-align:center}.hg-name br{display:none}.hg-name span{display:inline}.hg-name{font-size:clamp(38px,11vw,72px)}.hg-sub{font-size:15px}.hg-badge{font-size:10px}.hg-btn{padding:15px 26px;font-size:16px}.hg-hint{display:none}}
 @media (prefers-reduced-motion:reduce){.hg-grid,.hg-item{transition:none!important}.hg-orbs i,.hg-dot i,.hg-btn em{animation:none}}
+
+/* fluid ink cursor (js/splash-cursor.js) */
+.splash-cursor{position:fixed;inset:0;pointer-events:none;z-index:1100}
+.splash-cursor__canvas{display:block;width:100%;height:100%}
