@@ -1,6 +1,6 @@
 # Sabir Oussaoui - portfolio (HTML · CSS · JavaScript)
 
-Live site: **https://sabir-oussaoui.github.io**
+Live site: **https://sabiroussaoui.me** (custom domain; https://sabir-oussaoui.github.io redirects here)
 
 A static portfolio in the spirit of the CodeBucks Next.js developer-portfolio template, rebuilt
 with plain HTML, CSS and vanilla JavaScript - no framework, no build step.
@@ -13,7 +13,7 @@ Open `index.html` in a browser, or serve the folder:
 python3 -m http.server 8080   # then visit http://localhost:8080
 ```
 
-Deployed with GitHub Pages from the `main` branch of this repository (`sabir-oussaoui.github.io`); every push to `main` updates the live site.
+Deployed with GitHub Pages from the `main` branch of this repository (`sabir-oussaoui.github.io`); every push to `main` updates the live site. The `CNAME` file holds the custom domain `sabiroussaoui.me`; its DNS has the four GitHub Pages A records (185.199.108-111.153).
 
 ## Pages
 
