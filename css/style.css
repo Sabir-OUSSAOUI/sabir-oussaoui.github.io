@@ -273,7 +273,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 /* ---------- responsive ---------- */
 .cert-grid-wrap{}
 @media (max-width:1100px){.cert-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feat-pubs.cols3{grid-template-columns:repeat(2,minmax(0,1fr))}.wrap{padding:0 32px}header.nav{padding:18px 32px}.title{font-size:48px}.hero-txt h1{font-size:44px}.about-grid{grid-template-columns:1fr 1fr}.stats{grid-column:span 2;flex-direction:row;justify-content:space-around;text-align:center;align-items:center}.proj.half{grid-column:span 12}.skills{height:700px;--k:.78}}
-@media (max-width:1180px){
+@media (max-width:1340px){
   header .nav-links,header .socials{display:none}
   .burger{display:flex;order:2;margin-left:auto}
   .mobile-menu{display:none;position:fixed;inset:0;z-index:70;padding:0;background:rgba(27,27,27,.9);color:var(--light);backdrop-filter:blur(6px);flex-direction:column;align-items:center;justify-content:center;gap:28px;font-size:22px;font-weight:600}
@@ -414,3 +414,36 @@ html.dark .hireme a{background:var(--gold);color:var(--gold-ink)}
 .hg-btn:focus-visible{outline-color:#8B5CF6}
 .hg-btn em{background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent)}
 .hg-hint{color:#64748B}
+
+/* ---------- contact page ---------- */
+.ct-wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);border:2px solid var(--edge);border-radius:24px;overflow:hidden;box-shadow:14px 14px 0 var(--shadow);background:var(--bg);max-width:1120px;margin:0 auto}
+html.dark .ct-wrap{background:var(--card)}
+.ct-info{padding:36px 32px;background:var(--card);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:24px}
+html.dark .ct-info{background:#18151F}
+.ct-brand{display:flex;align-items:center;gap:14px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.ct-brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.ct-brand b{display:block;font-size:19px}.ct-brand span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.ct-block h4{display:flex;align-items:center;gap:8px;margin:0 0 8px;font:700 12px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.ct-block h4 svg{width:16px;height:16px;flex:none}
+.ct-block p{margin:0 0 8px;font-weight:500;font-size:14px;line-height:1.55}
+.ct-block a{color:inherit;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;overflow-wrap:anywhere}
+.ct-social{display:flex;gap:14px}.ct-social a{text-decoration:none;display:inline-flex}.ct-social a:hover{color:var(--accent)}
+.ct-info .btn{align-self:flex-start;margin-top:auto}
+.ct-form{padding:36px 40px;display:flex;flex-direction:column;gap:18px}
+.ct-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ct-field{display:flex;flex-direction:column;gap:8px}
+.ct-field span{font:600 12px var(--font);letter-spacing:.06em;text-transform:uppercase}
+.ct-field i{font-style:normal;color:var(--gold)}
+.ct-field input,.ct-field textarea{font:500 15px var(--font);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:13px 14px;outline:none;transition:border-color .2s,box-shadow .2s;resize:vertical}
+html.dark .ct-field input,html.dark .ct-field textarea{background:#121212;border-color:rgba(139,92,246,.3)}
+.ct-field input::placeholder,.ct-field textarea::placeholder{color:var(--muted);opacity:.8}
+.ct-field input:focus,.ct-field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,92,246,.25)}
+.ct-honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ct-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+.ct-actions .btn:disabled{opacity:.6;cursor:progress}
+.ct-status{margin:0;font-weight:500;font-size:14px}
+.ct-status.ok{color:#4ade80}.ct-status.err{color:#f87171}
+html:not(.dark) .ct-status.ok{color:#15803d}html:not(.dark) .ct-status.err{color:#b91c1c}
+.ct-status a{color:inherit}
+@media (max-width:860px){.ct-wrap{grid-template-columns:1fr}.ct-info{border-right:0;border-bottom:1px solid var(--line)}.ct-form{padding:28px 22px}.ct-info{padding:28px 22px}.ct-row{grid-template-columns:1fr}.ct-wrap{box-shadow:8px 8px 0 var(--shadow)}}
+html.dark{background:#121212}

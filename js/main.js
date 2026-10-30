@@ -35,7 +35,7 @@
   /* ---- header / nav ---- */
   function renderNav() {
     const t = T().nav;
-    const links = [["index.html", t.home, "home"], ["about.html", t.about, "about"], ["projects.html", t.projects, "projects"], ["publications.html", t.pubs, "pubs"], ["certificates.html", t.certs, "certs"]].concat(S.events && S.events.length ? [["events.html", t.events, "events"]] : []).concat(S.references && S.references.length ? [["references.html", t.refs, "refs"]] : []);
+    const links = [["index.html", t.home, "home"], ["about.html", t.about, "about"], ["projects.html", t.projects, "projects"], ["publications.html", t.pubs, "pubs"], ["certificates.html", t.certs, "certs"]].concat(S.events && S.events.length ? [["events.html", t.events, "events"]] : []).concat(S.references && S.references.length ? [["references.html", t.refs, "refs"]] : []).concat([["contact.html", t.contact, "contact"]]);
     const linkHtml = links.map(([h, l, k]) => `<a class="nl" href="${h}" ${page === k ? 'aria-current="page"' : ""}>${esc(l)}</a>`).join("");
     const socials = `<a class="soc" href="${S.links.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>
       <a class="soc" href="${S.links.scholar}" target="_blank" rel="noopener" aria-label="Google Scholar">${ICONS.scholar}</a>
@@ -299,9 +299,54 @@
     observeReveals();
   }
 
+  function renderContact() {
+    const t = T();
+    animateText($("#ctTitle"), t.ctTitle);
+    $("#ctLede").textContent = t.ctLede;
+    const pin = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+    const uni = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c3 2 7 2 10 0v-5"/></svg>';
+    const hash = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>';
+    $("#ctInfo").innerHTML = `
+      <div class="ct-brand"><img src="images/profile/avatar.png" alt="" width="56" height="56"><div><b>Sabir OUSSAOUI</b><span>${lang === "fr" ? "Doctorant · Télédétection, IA et sécheresse" : "PhD Researcher · Remote sensing, AI & drought"}</span></div></div>
+      <div class="ct-block"><h4>${uni}${esc(t.ctOffice)}</h4><p>UM6P - International Water Research Institute (IWRI)<br>Ben Guerir, Morocco</p><p>UQTR - Centre de recherche RIVE<br>Trois-Rivières, Québec, Canada</p></div>
+      <div class="ct-block"><h4>${ICONS.mail}${esc(t.ctEmail)}</h4><p><a href="mailto:${esc(S.email)}">${esc(S.email)}</a></p></div>
+      <div class="ct-block"><h4>${pin}${esc(t.ctLocation)}</h4><p>${esc(t.ctLocVal)}</p></div>
+      <div class="ct-block"><h4>${hash}${esc(t.ctSocial)}</h4><div class="ct-social">
+        <a href="${S.links.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>
+        <a href="${S.links.scholar}" target="_blank" rel="noopener" aria-label="Google Scholar">${ICONS.scholar}</a>
+        <a href="${S.links.researchgate}" target="_blank" rel="noopener" aria-label="ResearchGate">${ICONS.rg}</a></div></div>
+      ${S.cvFile ? `<a class="btn" href="${S.cvFile}" download>${esc(t.ctCv)}</a>` : ""}`;
+    const f = (id, label, ph, type, req) => `<label class="ct-field" for="${id}"><span>${esc(label)}${req ? ' <i aria-hidden="true">*</i>' : ""}</span>${type === "textarea" ? `<textarea id="${id}" name="${id}" rows="6" placeholder="${esc(ph)}"${req ? " required" : ""}></textarea>` : `<input id="${id}" name="${id}" type="${type}" placeholder="${esc(ph)}"${req ? " required" : ""}${type === "email" ? ' autocomplete="email"' : ""}>`}</label>`;
+    $("#ctForm").innerHTML = `
+      <div class="ct-row">${f("first", t.ctFirst, t.ctFirstPh, "text", true)}${f("last", t.ctLast, t.ctLastPh, "text", true)}</div>
+      ${f("email", t.ctMail, t.ctMailPh, "email", true)}
+      ${f("subject", t.ctSubject, t.ctSubjectPh, "text", false)}
+      ${f("message", t.ctMsg, t.ctMsgPh, "textarea", true)}
+      <input type="text" name="_honey" class="ct-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="ct-actions"><button class="btn" type="submit">${esc(t.ctSend)}</button><p class="ct-status" role="status" aria-live="polite"></p></div>`;
+    const form = $("#ctForm"), status = $(".ct-status", form), btn = $("button", form);
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const d = Object.fromEntries(new FormData(form));
+      if (d._honey) return;
+      btn.disabled = true; btn.textContent = t.ctSending; status.className = "ct-status"; status.textContent = "";
+      try {
+        const r = await fetch(S.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ name: `${d.first} ${d.last}`.trim(), email: d.email, subject: d.subject || "-", message: d.message,
+            _subject: `Portfolio message from ${d.first} ${d.last}${d.subject ? " - " + d.subject : ""}`, _replyto: d.email, _template: "table", _captcha: "false" }) });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || r.status);
+        form.reset(); status.classList.add("ok"); status.textContent = t.ctOk;
+      } catch (err) {
+        status.classList.add("err"); status.innerHTML = `${esc(t.ctErr)} <a href="mailto:${esc(S.email)}">${esc(S.email)}</a>.`;
+      } finally { btn.disabled = false; btn.textContent = t.ctSend; }
+    });
+  }
+
   function renderAll() {
     renderNav(); renderFooter(); padForHeader();
-    ({ home: renderHome, about: renderAbout, projects: renderProjects, pubs: renderPubs, certs: renderCerts, events: renderEvents, refs: renderRefs }[page] || (() => {}))();
+    ({ home: renderHome, about: renderAbout, projects: renderProjects, pubs: renderPubs, certs: renderCerts, events: renderEvents, refs: renderRefs, contact: renderContact }[page] || (() => {}))();
     observeReveals(); timelineRails();
   }
 
