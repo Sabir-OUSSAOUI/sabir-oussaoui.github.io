@@ -59,6 +59,14 @@
     burger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
     $("#menuClose").addEventListener("click", () => setMenu(false));
     $$("a", menu).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    // The name badge replays the opening screen and brings the visitor back home.
+    $("#header .logo").addEventListener("click", (e) => {
+      if (!window.showIntro || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault(); e.stopPropagation();
+      window.showIntro();
+      if (page !== "home" && typeof softGo === "function" && location.protocol !== "file:") softGo(new URL("index.html", location.href).href, true);
+      else if (page !== "home") setTimeout(() => { location.href = "index.html"; }, 50);
+    });
     renderThemeIcon();
   }
   function renderThemeIcon() { const dark = root.classList.contains("dark"); $$("#themeBtn,[data-m='themeBtn']").forEach((b) => (b.innerHTML = dark ? ICONS.sun : ICONS.moon)); }

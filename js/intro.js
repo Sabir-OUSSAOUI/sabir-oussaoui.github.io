@@ -1,12 +1,17 @@
 /* Opening screen: a plain JavaScript port of the "HyperGrid" moving-grid hero.
-   Shown on the home page once per browser session. A tilted 3D grid drifts
+   Shown on the home page once per browser session, and again whenever the name badge in the header is clicked. A tilted 3D grid drifts
    forward, follows the cursor and lights up around it; "Enter" fires the warp
    jump, then the screen fades out to reveal the portfolio. */
 (function () {
   "use strict";
   var ss = { get: function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }, set: function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} } };
   var forced = /[?&]intro\b/.test(location.search);
-  if (ss.get("introSeen") && !forced) return;
+  var isHome = document.body.dataset.page === "home";
+  // The name badge in the header calls this to replay the opening screen.
+  window.showIntro = function () { if (!document.querySelector(".hg-intro")) run(); };
+  if (isHome && (!ss.get("introSeen") || forced)) run();
+
+  function run() {
 
   var lang = "en";
   try { lang = localStorage.getItem("lang") || "en"; } catch (e) {}
@@ -70,7 +75,8 @@
   var gx = 0, gy = 0, warp = 0, warpTarget = 0, leaving = false, raf = 0, last = performance.now();
   var ease = function (c, t, dt, rate) { return c + (t - c) * (1 - Math.exp(-dt * rate)); };
 
-  window.addEventListener("resize", function () { W = innerWidth; H = innerHeight; });
+  function onResize() { W = innerWidth; H = innerHeight; }
+  window.addEventListener("resize", onResize);
   el.addEventListener("pointermove", function (e) {
     vel = [e.clientX - prev[0], e.clientY - prev[1]];
     mouse = [e.clientX, e.clientY]; prev = [e.clientX, e.clientY];
@@ -225,6 +231,7 @@
     setTimeout(close, 1700);
   }
   function close() {
+    window.removeEventListener("resize", onResize); window.removeEventListener("resize", sizeGlobe);
     cancelAnimationFrame(raf); raf = 0;
     el.remove();
     document.documentElement.classList.remove("hg-lock");
@@ -235,4 +242,5 @@
     if (e.key === "Enter" || e.key === "Escape" || e.key === " ") { e.preventDefault(); enter(); }
   });
   setTimeout(function () { try { btn.focus({ preventScroll: true }); } catch (e) {} }, 400);
+  }
 })();

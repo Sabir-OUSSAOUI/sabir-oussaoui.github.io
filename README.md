@@ -60,7 +60,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 
 ## Opening screen
 
-`js/intro.js` (home page only) shows a full-screen opening: the name "Sabir OUSSAOUI" on the left, the portrait (`images/profile/intro-cutout.webp`, background removed) in front of a rotating network globe on the right, over a moving 3D grid that tilts with the cursor, a plain JavaScript port of the "HyperGrid" component. "Enter the portfolio" (or Enter / Escape) fires the warp effect and fades into the site. It shows once per browser session; add `?intro` to the URL to see it again.
+`js/intro.js` (home page only) shows a full-screen opening: the name "Sabir OUSSAOUI" on the left, the portrait (`images/profile/intro-cutout.webp`, background removed) in front of a rotating network globe on the right, over a moving 3D grid that tilts with the cursor, a plain JavaScript port of the "HyperGrid" component. "Enter the portfolio" (or Enter / Escape) fires the warp effect and fades into the site. It shows once per browser session; clicking the name badge in the header (on any page) replays it and returns to Home, and `?intro` in the URL also forces it.
 
 ## Cursor effect
 
