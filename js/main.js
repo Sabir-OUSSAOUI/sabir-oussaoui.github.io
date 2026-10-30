@@ -336,10 +336,13 @@
           body: JSON.stringify({ name: `${d.first} ${d.last}`.trim(), email: d.email, subject: d.subject || "-", message: d.message,
             _subject: `Portfolio message from ${d.first} ${d.last}${d.subject ? " - " + d.subject : ""}`, _replyto: d.email, _template: "table", _captcha: "false" }) });
         const j = await r.json().catch(() => ({}));
-        if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || r.status);
+        if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || String(r.status));
         form.reset(); status.classList.add("ok"); status.textContent = t.ctOk;
       } catch (err) {
-        status.classList.add("err"); status.innerHTML = `${esc(t.ctErr)} <a href="mailto:${esc(S.email)}">${esc(S.email)}</a>.`;
+        const msg = String((err && err.message) || "");
+        console.warn("contact form:", msg);
+        if (/activat/i.test(msg)) { status.classList.add("warn"); status.textContent = t.ctActivate; }
+        else { status.classList.add("err"); status.innerHTML = `${esc(t.ctErr)} <a href="mailto:${esc(S.email)}">${esc(S.email)}</a>.`; }
       } finally { btn.disabled = false; btn.textContent = t.ctSend; }
     });
   }

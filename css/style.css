@@ -447,3 +447,6 @@ html:not(.dark) .ct-status.ok{color:#15803d}html:not(.dark) .ct-status.err{color
 .ct-status a{color:inherit}
 @media (max-width:860px){.ct-wrap{grid-template-columns:1fr}.ct-info{border-right:0;border-bottom:1px solid var(--line)}.ct-form{padding:28px 22px}.ct-info{padding:28px 22px}.ct-row{grid-template-columns:1fr}.ct-wrap{box-shadow:8px 8px 0 var(--shadow)}}
 html.dark{background:#121212}
+.ct-status.warn{color:#FBBF24}html:not(.dark) .ct-status.warn{color:#92400e}
+/* keep browser autofill in the dark theme */
+html.dark .ct-field input:-webkit-autofill,html.dark .ct-field input:-webkit-autofill:hover,html.dark .ct-field input:-webkit-autofill:focus{-webkit-text-fill-color:#F8FAFC;-webkit-box-shadow:0 0 0 1000px #121212 inset;caret-color:#F8FAFC;transition:background-color 9999s}
