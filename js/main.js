@@ -24,7 +24,6 @@
     linkedin: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.3 8h4.4v14H.3V8zm7.5 0h4.2v1.9h.1c.6-1.1 2-2.3 4.2-2.3 4.5 0 5.3 3 5.3 6.8V22h-4.4v-6.7c0-1.6 0-3.7-2.2-3.7s-2.6 1.7-2.6 3.6V22H7.8V8z"/></svg>',
     scholar: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>',
     rg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 20V6h5a3 3 0 010 6H8"/><path d="M11 12l4 8"/><path d="M17 4h3M18.5 2.5v3"/></svg>',
-    phone: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
     mail: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
     sun: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
     moon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>'
@@ -236,7 +235,6 @@
     $("#lbPrev").style.display = $("#lbNext").style.display = lbImgs.length > 1 ? "" : "none";
   }
   function openLightbox(c) {
-    const lb = $("#lightbox");
     openImage([c.slug].concat(c.extra || []).map((s) => `certificates/${s}`), `${c[lang]} - ${c.org}`);
   }
   function openImage(imgs, caption) {
@@ -333,22 +331,14 @@
       const subject = `Portfolio message from ${d.first} ${d.last}${d.subject ? " - " + d.subject : ""}`;
       const mailto = () => `mailto:${S.formEmail || S.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`${d.message}\n\n${d.first} ${d.last}\n${d.email}`)}`;
       try {
-        let r;
-        if (S.web3formsKey) {
-          r = await fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({ access_key: S.web3formsKey, subject, from_name: "Portfolio sabiroussaoui.me", name: `${d.first} ${d.last}`.trim(), email: d.email, replyto: d.email, topic: d.subject || "-", message: d.message, botcheck: "" }) });
-        } else {
-          r = await fetch(S.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({ name: `${d.first} ${d.last}`.trim(), email: d.email, subject: d.subject || "-", message: d.message, _subject: subject, _replyto: d.email, _template: "table", _captcha: "false" }) });
-        }
+        const r = await fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ access_key: S.web3formsKey, subject, from_name: "Portfolio sabiroussaoui.me", name: `${d.first} ${d.last}`.trim(), email: d.email, replyto: d.email, topic: d.subject || "-", message: d.message, botcheck: "" }) });
         const j = await r.json().catch(() => ({}));
-        if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || String(r.status));
+        if (!r.ok || j.success === false) throw new Error(j.message || String(r.status));
         form.reset(); status.classList.add("ok"); status.textContent = t.ctOk;
       } catch (err) {
-        const msg = String((err && err.message) || "");
-        console.warn("contact form:", msg);
-        if (/activat/i.test(msg)) { status.classList.add("warn"); status.textContent = t.ctActivate; }
-        else { status.classList.add("warn"); status.innerHTML = `${esc(t.ctFallback)} <a class="ct-mailto" href="${mailto()}">${esc(t.ctFallbackBtn)} ↗</a>`; }
+        console.warn("contact form:", (err && err.message) || err);
+        status.classList.add("warn"); status.innerHTML = `${esc(t.ctFallback)} <a class="ct-mailto" href="${mailto()}">${esc(t.ctFallbackBtn)} ↗</a>`;
       } finally { btn.disabled = false; btn.textContent = t.ctSend; }
     });
   }

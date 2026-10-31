@@ -12,11 +12,10 @@ window.SITE = {
     researchgate: "https://www.researchgate.net/profile/Sabir-Oussaoui"
   },
   cvFile: "files/CV_OUSSAOUI.pdf",
-  // Contact form delivery. If web3formsKey is set (free key from web3forms.com, sent to the Gmail below),
-  // Web3Forms is used; otherwise FormSubmit. If the service fails, the visitor's email app opens pre-filled.
+  // Contact form delivery through Web3Forms (free key from web3forms.com, tied to the Gmail below).
+  // If the service fails, the visitor gets a link that opens their email app with the message filled in.
   formEmail: "sabiroussaoui11@gmail.com",
   web3formsKey: "5b708af6-da88-4882-a3ca-df88ce1e84ad",
-  formEndpoint: "https://formsubmit.co/ajax/sabiroussaoui11@gmail.com",
 
   i18n: {
     en: {
@@ -25,8 +24,8 @@ window.SITE = {
       ctTitle: "Get in touch", ctLede: "For a collaboration, a talk, a supervision or just a question, send me a message and it lands directly in my inbox.",
       ctOffice: "Affiliations", ctEmail: "Email", ctLocation: "Based in", ctLocVal: "Ben Guerir, Morocco · Trois-Rivières, Canada", ctSocial: "Online", ctCv: "Download my CV",
       ctFirst: "Your first name", ctLast: "Your last name", ctMail: "Your email", ctSubject: "Subject", ctMsg: "Message", ctFirstPh: "Enter your first name", ctLastPh: "Enter your last name", ctMailPh: "Enter your email", ctSubjectPh: "Collaboration, talk, supervision...", ctMsgPh: "Feel free to write me a message!",
-      ctSend: "Send message", ctSending: "Sending...", ctOk: "Thank you! Your message has been sent. I will get back to you soon.", ctErr: "The message could not be sent. Please try again or write to me directly at", ctRequired: "Required field", ctFallback: "The sending service is not responding right now. Send the same message with your email app:", ctFallbackBtn: "Open my email app", ctActivate: "The form is waiting for a one-time activation by the site owner. Your message was not delivered yet: please write to me directly by email for now.",
-      refTitle: "References", refLede: "Professors who can be contacted for a reference about Sabir OUSSAOUI.", refEmail: "Email", refPhone: "Phone",
+      ctSend: "Send message", ctSending: "Sending...", ctOk: "Thank you! Your message has been sent. I will get back to you soon.", ctFallback: "The sending service is not responding right now. Send the same message with your email app:", ctFallbackBtn: "Open my email app",
+      refTitle: "References", refLede: "Professors who can be contacted for a reference about Sabir OUSSAOUI.", refEmail: "Email",
       certTitle: "Certificates", certLede: "Awards, conference certificates, training and teaching attestations. Click any certificate to view it full size.", certCats: { all: "All", award: "Awards", conference: "Conferences", training: "Training", teaching: "Teaching & organisation" }, certCount: "certificates", close: "Close",
       hire: "Let's talk",
       heroTitle: "Earth Observation & AI for Drought Resilience",
@@ -61,8 +60,8 @@ window.SITE = {
       ctTitle: "Me contacter", ctLede: "Pour une collaboration, une conférence, un encadrement ou simplement une question, envoyez-moi un message : il arrive directement dans ma boîte mail.",
       ctOffice: "Affiliations", ctEmail: "Courriel", ctLocation: "Basé à", ctLocVal: "Ben Guerir, Maroc · Trois-Rivières, Canada", ctSocial: "En ligne", ctCv: "Télécharger mon CV",
       ctFirst: "Votre prénom", ctLast: "Votre nom", ctMail: "Votre courriel", ctSubject: "Objet", ctMsg: "Message", ctFirstPh: "Entrez votre prénom", ctLastPh: "Entrez votre nom", ctMailPh: "Entrez votre courriel", ctSubjectPh: "Collaboration, conférence, encadrement...", ctMsgPh: "N'hésitez pas à m'écrire un message !",
-      ctSend: "Envoyer le message", ctSending: "Envoi en cours...", ctOk: "Merci ! Votre message a bien été envoyé. Je vous répondrai rapidement.", ctErr: "Le message n'a pas pu être envoyé. Réessayez ou écrivez-moi directement à", ctRequired: "Champ obligatoire", ctFallback: "Le service d'envoi ne répond pas pour le moment. Envoyez le même message avec votre application de messagerie :", ctFallbackBtn: "Ouvrir ma messagerie", ctActivate: "Le formulaire attend une activation unique par le propriétaire du site. Votre message n'a pas encore été transmis : écrivez-moi directement par courriel pour le moment.",
-      refTitle: "Références", refLede: "Professeurs pouvant être contactés pour une référence au sujet de Sabir OUSSAOUI.", refEmail: "Courriel", refPhone: "Téléphone",
+      ctSend: "Envoyer le message", ctSending: "Envoi en cours...", ctOk: "Merci ! Votre message a bien été envoyé. Je vous répondrai rapidement.", ctFallback: "Le service d'envoi ne répond pas pour le moment. Envoyez le même message avec votre application de messagerie :", ctFallbackBtn: "Ouvrir ma messagerie",
+      refTitle: "Références", refLede: "Professeurs pouvant être contactés pour une référence au sujet de Sabir OUSSAOUI.", refEmail: "Courriel",
       certTitle: "Certificats", certLede: "Distinctions, certificats de conférences, formations et attestations d'enseignement. Cliquez sur un certificat pour l'afficher en grand.", certCats: { all: "Tous", award: "Distinctions", conference: "Conférences", training: "Formations", teaching: "Enseignement et organisation" }, certCount: "certificats", close: "Fermer",
       hire: "Parlons-en",
       heroTitle: "Observation de la Terre et IA pour la résilience à la sécheresse",
