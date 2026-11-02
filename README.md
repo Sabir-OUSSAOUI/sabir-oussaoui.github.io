@@ -75,3 +75,7 @@ Links between pages are handled in `js/main.js` without a full reload: the new p
 ## Colours
 
 Dark mode (default): backgrounds `#121212` with a static gradient to `#1E1B26` / `#2A1B38`, cards `#1E1B26`, purple `#8B5CF6` for subheadings, icons and hover, deep purple `#5B21B6` for card shadows and accents, gold `#FBBF24` (with dark text) for main buttons and the active menu item, text `#F8FAFC` and `#94A3B8`. Light mode uses `#F8FAFC` with deep purple accents and the same gold buttons. All colours are CSS variables at the top of `css/style.css`.
+
+## Search engines
+
+Every page has a description, a canonical link and sharing tags (Open Graph); the home page also carries a schema.org `Person` profile (JSON-LD) linking to LinkedIn, Google Scholar, ResearchGate and GitHub. `sitemap.xml` lists the pages and `robots.txt` points to it (the signature page is excluded). After adding a page, add it to `sitemap.xml`. Indexing is followed in Google Search Console for the property `sabiroussaoui.me`.

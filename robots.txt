@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /signature.html
+
+Sitemap: https://sabiroussaoui.me/sitemap.xml
