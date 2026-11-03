@@ -79,3 +79,5 @@ Dark mode (default): backgrounds `#121212` with a static gradient to `#1E1B26` /
 ## Search engines
 
 Every page has a description, a canonical link and sharing tags (Open Graph); the home page also carries a schema.org `Person` profile (JSON-LD) linking to LinkedIn, Google Scholar, ResearchGate and GitHub. `sitemap.xml` lists the pages and `robots.txt` points to it (the signature page is excluded). After adding a page, add it to `sitemap.xml`. Indexing is followed in Google Search Console for the property `sabiroussaoui.me`.
+
+Site icon: `favicon.ico` (16/32/48 px), `images/logo-48|96|192|512.png` and `images/apple-touch-icon.png`, cut from the SO logo. The home page declares the site name "Sabir OUSSAOUI" (schema.org `WebSite`) so Google can show it instead of the bare domain.
