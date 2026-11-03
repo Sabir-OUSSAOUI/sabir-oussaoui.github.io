@@ -11,7 +11,6 @@ window.SITE = {
     scholar: "https://scholar.google.com/citations?user=mRgV_v4AAAAJ&hl=en",
     researchgate: "https://www.researchgate.net/profile/Sabir-Oussaoui"
   },
-  cvFile: "files/CV_OUSSAOUI.pdf",
   // Contact form delivery through Web3Forms (free key from web3forms.com, tied to the Gmail below).
   // If the service fails, the visitor gets a link that opens their email app with the message filled in.
   formEmail: "sabiroussaoui11@gmail.com",
@@ -22,7 +21,7 @@ window.SITE = {
       nav: { home: "Home", about: "About", projects: "Projects", pubs: "Publications", certs: "Certificates", events: "Events", refs: "References", contact: "Contact" },
       evTitle: "Events", evLede: "Conferences, workshops, field campaigns and outreach I have taken part in. Click a photo to see the full gallery.", evPhotos: "photos", evEmpty: "Events coming soon.",
       ctTitle: "Get in touch", ctLede: "For a collaboration, a talk, a supervision or just a question, send me a message and it lands directly in my inbox.",
-      ctOffice: "Affiliations", ctEmail: "Email", ctLocation: "Based in", ctLocVal: "Ben Guerir, Morocco · Trois-Rivières, Canada", ctSocial: "Online", ctCv: "Download my CV",
+      ctOffice: "Affiliations", ctEmail: "Email", ctLocation: "Based in", ctLocVal: "Ben Guerir, Morocco · Trois-Rivières, Canada", ctSocial: "Online", ctCv: "Request my CV",
       ctFirst: "Your first name", ctLast: "Your last name", ctMail: "Your email", ctSubject: "Subject", ctMsg: "Message", ctFirstPh: "Enter your first name", ctLastPh: "Enter your last name", ctMailPh: "Enter your email", ctSubjectPh: "Collaboration, talk, supervision...", ctMsgPh: "Feel free to write me a message!",
       ctSend: "Send message", ctSending: "Sending...", ctOk: "Thank you! Your message has been sent. I will get back to you soon.", ctFallback: "The sending service is not responding right now. Send the same message with your email app:", ctFallbackBtn: "Open my email app",
       refTitle: "References", refLede: "Professors who can be contacted for a reference about Sabir OUSSAOUI.", refEmail: "Email",
@@ -31,7 +30,7 @@ window.SITE = {
       heroTitle: "Earth Observation & AI for Drought Resilience",
       heroSub: "I am <b>Sabir OUSSAOUI</b>, PhD Researcher connecting satellite observations, hydroclimatic modelling and socioeconomic data to understand and forecast drought impacts.",
       cotutelle: "Joint PhD (cotutelle) - thesis: Drought Monitoring and Forecasting in Morocco using Remote Sensing and Socioeconomic Data",
-      ctaResearch: "Explore my research", ctaPubs: "View publications", cv: "Download CV", cvNote: "CV on request by email",
+      ctaResearch: "Explore my research", ctaPubs: "View publications", cv: "Request my CV", cvSubject: "CV request", cvBody: "Hello Sabir,\n\nCould you please send me your CV?\n\nBest regards,",
       aboutTitle: "Research that starts in orbit and ends in a farmer's field.",
       bioHead: "Biography",
       bio: [
@@ -58,7 +57,7 @@ window.SITE = {
       nav: { home: "Accueil", about: "À propos", projects: "Projets", pubs: "Publications", certs: "Certificats", events: "Événements", refs: "Références", contact: "Contact" },
       evTitle: "Événements", evLede: "Conférences, ateliers, campagnes de terrain et actions de vulgarisation auxquels j'ai participé. Cliquez sur une photo pour voir la galerie.", evPhotos: "photos", evEmpty: "Événements à venir.",
       ctTitle: "Me contacter", ctLede: "Pour une collaboration, une conférence, un encadrement ou simplement une question, envoyez-moi un message : il arrive directement dans ma boîte mail.",
-      ctOffice: "Affiliations", ctEmail: "Courriel", ctLocation: "Basé à", ctLocVal: "Ben Guerir, Maroc · Trois-Rivières, Canada", ctSocial: "En ligne", ctCv: "Télécharger mon CV",
+      ctOffice: "Affiliations", ctEmail: "Courriel", ctLocation: "Basé à", ctLocVal: "Ben Guerir, Maroc · Trois-Rivières, Canada", ctSocial: "En ligne", ctCv: "Demander mon CV",
       ctFirst: "Votre prénom", ctLast: "Votre nom", ctMail: "Votre courriel", ctSubject: "Objet", ctMsg: "Message", ctFirstPh: "Entrez votre prénom", ctLastPh: "Entrez votre nom", ctMailPh: "Entrez votre courriel", ctSubjectPh: "Collaboration, conférence, encadrement...", ctMsgPh: "N'hésitez pas à m'écrire un message !",
       ctSend: "Envoyer le message", ctSending: "Envoi en cours...", ctOk: "Merci ! Votre message a bien été envoyé. Je vous répondrai rapidement.", ctFallback: "Le service d'envoi ne répond pas pour le moment. Envoyez le même message avec votre application de messagerie :", ctFallbackBtn: "Ouvrir ma messagerie",
       refTitle: "Références", refLede: "Professeurs pouvant être contactés pour une référence au sujet de Sabir OUSSAOUI.", refEmail: "Courriel",
@@ -67,7 +66,7 @@ window.SITE = {
       heroTitle: "Observation de la Terre et IA pour la résilience à la sécheresse",
       heroSub: "Je suis <b>Sabir OUSSAOUI</b>, doctorant reliant observations satellitaires, modélisation hydroclimatique et données socioéconomiques pour comprendre et prévoir les impacts de la sécheresse.",
       cotutelle: "Doctorat en cotutelle - thèse : Drought Monitoring and Forecasting in Morocco using Remote Sensing and Socioeconomic Data",
-      ctaResearch: "Explorer mes recherches", ctaPubs: "Voir les publications", cv: "Télécharger le CV", cvNote: "CV disponible sur demande par courriel",
+      ctaResearch: "Explorer mes recherches", ctaPubs: "Voir les publications", cv: "Demander mon CV", cvSubject: "Demande de CV", cvBody: "Bonjour Sabir,\n\nPourriez-vous m'envoyer votre CV ?\n\nCordialement,",
       aboutTitle: "Une recherche qui commence en orbite et finit dans le champ d'un agriculteur.",
       bioHead: "Biographie",
       bio: [

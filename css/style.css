@@ -425,3 +425,4 @@ html.dark .ct-field input:-webkit-autofill,html.dark .ct-field input:-webkit-aut
 .ct-mailto{display:inline-block;margin-left:6px;font-weight:700;color:var(--gold)!important;text-decoration:underline}
 html:not(.dark) .ct-mailto{color:#5B21B6!important}
 
+.cv-req{display:inline-flex;align-items:center;gap:8px}.cv-req svg{width:18px;height:18px;flex:none}

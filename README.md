@@ -34,7 +34,7 @@ Deployed with GitHub Pages from the `main` branch of this repository (`sabir-ous
 Everything is in **`js/data.js`** - publications, projects, timelines, skills, EN/FR copy.
 Pages contain only layout.
 
-- The CV PDF lives in `files/CV_OUSSAOUI.pdf` (`cvFile` in `js/data.js`); replace the file to update the Download CV link.
+- The CV is not published: "Request my CV" (home page and contact page) opens an email to Sabir with a ready-made message (`cvSubject` / `cvBody` in `js/data.js`).
 - Publication statuses: `pub` (published), `accepted` (accepted, in press), `acc` (accepted with revisions), `rev` (under review).
 
 ## Updating

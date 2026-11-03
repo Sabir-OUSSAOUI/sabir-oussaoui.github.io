@@ -29,6 +29,8 @@
     moon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>'
   };
 
+  // CV is sent on request: opens the visitor's email app with a ready-made message.
+  const cvMail = () => `mailto:${S.email}?subject=${encodeURIComponent(T().cvSubject)}&body=${encodeURIComponent(T().cvBody)}`;
   const outlook = () => "https://outlook.office.com/mail/deeplink/compose?to=" + encodeURIComponent(S.email.toLowerCase()) + "&subject=" + encodeURIComponent(lang === "fr" ? "Collaboration - sécheresse et observation de la Terre" : "Collaboration - drought & Earth observation");
 
   /* ---- header / nav ---- */
@@ -112,7 +114,7 @@
     $("#ctaResearch").textContent = t.ctaResearch;
     $("#ctaPubs").textContent = t.ctaPubs;
     const cv = $("#cvLink");
-    if (S.cvFile) { cv.href = S.cvFile; cv.textContent = t.cv; cv.setAttribute("download", ""); } else { cv.removeAttribute("href"); cv.textContent = t.cvNote; cv.style.textDecoration = "none"; cv.style.fontWeight = "500"; cv.style.color = "var(--muted)"; }
+    cv.href = cvMail(); cv.innerHTML = `${ICONS.mail}<span>${esc(t.cv)}</span>`; cv.classList.add("cv-req");
     $("#hireLabel").textContent = t.hire;
     $("#hireLabel").href = outlook();
     $("#ringText").textContent = lang === "en" ? "Open to collaboration · drought · water · EO · " : "Ouvert aux collaborations · sécheresse · eau · ";
@@ -312,7 +314,7 @@
         <a href="${S.links.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>
         <a href="${S.links.scholar}" target="_blank" rel="noopener" aria-label="Google Scholar">${ICONS.scholar}</a>
         <a href="${S.links.researchgate}" target="_blank" rel="noopener" aria-label="ResearchGate">${ICONS.rg}</a></div></div>
-      ${S.cvFile ? `<a class="btn" href="${S.cvFile}" download>${esc(t.ctCv)}</a>` : ""}`;
+      <a class="btn cv-req" href="${cvMail()}">${ICONS.mail}<span>${esc(t.ctCv)}</span></a>`;
     const f = (id, label, ph, type, req) => `<label class="ct-field" for="${id}"><span>${esc(label)}${req ? ' <i aria-hidden="true">*</i>' : ""}</span>${type === "textarea" ? `<textarea id="${id}" name="${id}" rows="6" placeholder="${esc(ph)}"${req ? " required" : ""}></textarea>` : `<input id="${id}" name="${id}" type="${type}" placeholder="${esc(ph)}"${req ? " required" : ""}${type === "email" ? ' autocomplete="email"' : ""}>`}</label>`;
     $("#ctForm").innerHTML = `
       <div class="ct-row">${f("first", t.ctFirst, t.ctFirstPh, "text", true)}${f("last", t.ctLast, t.ctLastPh, "text", true)}</div>
