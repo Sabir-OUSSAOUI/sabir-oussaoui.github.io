@@ -150,7 +150,7 @@
     $("#supTitle").textContent = t.supTitle; $("#teachTitle").textContent = t.teachTitle;
     const C = t.supCols;
     $("#supTable").innerHTML = `<thead><tr><th>${C.student}</th><th>${C.title}</th><th>${C.degree}</th><th>${C.inst}</th><th>${C.year}</th><th>${C.role}</th></tr></thead><tbody>` +
-      S.supervision.map((s) => `<tr><td data-l="${esc(C.student)}"><b>${esc(s.student)}</b></td><td data-l="${esc(C.title)}">${esc(s.title)}</td><td data-l="${esc(C.degree)}"><span class="status">${esc(t.supDeg[s.degree])}</span></td><td data-l="${esc(C.inst)}">${esc(s.inst)}</td><td data-l="${esc(C.year)}" class="mono">${s.year}</td><td data-l="${esc(C.role)}"><span class="status ${s.role === "sup" ? "s-pub" : ""}">${esc(t.supRoles[s.role])}</span></td></tr>`).join("") + "</tbody>";
+      S.supervision.map((s) => `<tr><td data-l="${esc(C.student)}"><b>${esc(s.student)}</b></td><td data-l="${esc(C.title)}">${esc(lang === "fr" && s.titleFr ? s.titleFr : s.title)}</td><td data-l="${esc(C.degree)}"><span class="status">${esc(t.supDeg[s.degree])}</span></td><td data-l="${esc(C.inst)}">${esc(s.inst)}</td><td data-l="${esc(C.year)}" class="mono">${s.year}</td><td data-l="${esc(C.role)}"><span class="status ${s.role === "sup" ? "s-pub" : ""}">${esc(t.supRoles[s.role])}</span></td></tr>`).join("") + "</tbody>";
     $("#teachList").innerHTML = S.teaching[lang].map((x) => `<li class="reveal">${esc(x)}</li>`).join("");
     $("#awards").innerHTML = S.awards[lang].map(([d, ti, de]) => `<div class="feat-pub reveal"><span class="mono" style="color:var(--amber)">${esc(d)}</span><h3 style="font-size:18px">${esc(ti)}</h3><p style="margin:0;font-size:14px;color:var(--muted);font-weight:500">${esc(de)}</p></div>`).join("");
   }
