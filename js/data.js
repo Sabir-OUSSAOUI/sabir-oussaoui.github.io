@@ -252,7 +252,7 @@ window.SITE = {
 
   // Thesis supervision (from the CV). role: "sup" = external supervisor, "cosup" = co-external supervisor
   supervision: [
-    { year: 2026, student: "Lerrys Angoue Obiang", title: "Weather forecasting using physical models, remote sensing and artificial intelligence: evaluation of CFSv2-WRF dynamical downscaling in the Oum Er Rbia basin, Morocco (2016-2025)", degree: "MSc", inst: "UM5 - CRASTE-LF, Rabat", role: "cosup" },
+    { year: 2026, student: "Lerrys Angoue Obiang", title: "Weather forecasting using physical models, remote sensing and artificial intelligence: evaluation of CFSv2-WRF dynamical downscaling in the Oum Er Rbia basin, Morocco (2016-2025)", degree: "MSc", inst: "UM5 - CRASTE-LF, Rabat", role: "sup" },
     { year: 2026, student: "Khalil Mellouk", title: "Platform for the PCCI project with models for forecasting drought", degree: "MSc", inst: "UM5 - Data Science and AI", role: "sup" },
     { year: 2026, student: "Fatima Hajji", title: "Tracking Water-Dependent Ecosystems under Climate Extremes Using AI and Remote Sensing: The Skoura Oasis, Southern Morocco", degree: "BSc", inst: "VIVES University of Applied Sciences - Computer Science", role: "cosup" },
     { year: 2025, student: "Ayoub Goulahiane", title: "Spatiotemporal analysis of agricultural drought through land use dynamics and artificial intelligence approaches in the Doukkala plain from 2016 to 2025", degree: "MSc", inst: "USMS - Environmental Geomatics", role: "sup" },
