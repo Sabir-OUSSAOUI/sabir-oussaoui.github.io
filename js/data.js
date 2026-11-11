@@ -39,8 +39,8 @@ window.SITE = {
         "The aim is practical: strengthen the resilience of ecosystems and territories to climate change, and turn satellite signals into early warning and decision support for water and agriculture."
       ],
       stats: [["200", "+", "people trained in GIS & remote sensing"], ["8", "", "MSc & BSc theses supervised (2025-26)"], ["2", "", "institutions, one joint PhD"]],
-      skillsTitle: "Skills", skillsNote: "Each tool orbits the Earth like a satellite: satellites, then methods, data products and software.",
-      legend: ["Satellites", "Data products", "Software", "Methods"],
+      skillsTitle: "Skills", skillsNote: "Each orbit is one family of tools. Hover or tap a family to highlight its orbit; hover the map to pause it.",
+      skillCats: { sat: "Satellites", meth: "Methods", prod: "Data products", soft: "Software" },
       expTitle: "Experience", eduTitle: "Education", supTitle: "Supervision & co-supervision", supCols: { student: "Student", title: "Thesis title", degree: "Degree", inst: "Institution", year: "Year", role: "Role" }, supRoles: { sup: "External supervisor", cosup: "Co-external supervisor" }, supDeg: { MSc: "Master", BSc: "Bachelor" }, teachTitle: "Teaching & awards",
       projTitle: "Science in the field", projLede: "Four case studies from the thesis. Findings and contributions appear only where documented; click a figure to enlarge it.",
       conceptual: "Conceptual visual - not a research figure", figCap: { "p1-arboriculture-tadla": "Land-cover and drought-impact map, Tadla and lower Tassaout (Geocarto International, 2025)", "p2-trees-dvr": "Drought vegetation response (DVR) in months at visited sites (Science of Remote Sensing, 2026)", "p3-ipadi-doukkala": "IPADI 2015/16 - 2024/25, Doukkala perimeter and AUEA catchment", "p4-farmer-survey": "Field survey with farmers - UM6P, IWRI, CRSA, UQTR, ORMVAD, PCCI Québec, ABH Oum Er-Rbia" },
@@ -75,8 +75,8 @@ window.SITE = {
         "L'objectif est concret : renforcer la résilience des écosystèmes et des territoires face au changement climatique, et transformer les signaux satellitaires en alerte précoce et en aide à la décision pour l'eau et l'agriculture."
       ],
       stats: [["200", "+", "personnes formées en SIG et télédétection"], ["8", "", "mémoires MSc et BSc encadrés (2025-26)"], ["2", "", "institutions, un seul doctorat"]],
-      skillsTitle: "Compétences", skillsNote: "Chaque outil gravite autour de la Terre comme un satellite : satellites, puis méthodes, produits de données et logiciels.",
-      legend: ["Satellites", "Produits de données", "Logiciels", "Méthodes"],
+      skillsTitle: "Compétences", skillsNote: "Chaque orbite correspond à une famille d'outils. Survolez ou touchez une famille pour mettre son orbite en évidence ; survolez la carte pour la mettre en pause.",
+      skillCats: { sat: "Satellites", meth: "Méthodes", prod: "Produits de données", soft: "Logiciels" },
       expTitle: "Expérience", eduTitle: "Formation", supTitle: "Encadrement et co-encadrement", supCols: { student: "Étudiant(e)", title: "Titre du mémoire", degree: "Diplôme", inst: "Établissement", year: "Année", role: "Rôle" }, supRoles: { sup: "Encadrant externe", cosup: "Co-encadrant externe" }, supDeg: { MSc: "Master", BSc: "Licence" }, teachTitle: "Enseignement et distinctions",
       projTitle: "La science sur le terrain", projLede: "Quatre études de cas issues de la thèse. Résultats et contributions n'apparaissent que lorsqu'ils sont documentés ; cliquez sur une figure pour l'agrandir.",
       conceptual: "Visuel conceptuel - pas une figure scientifique", figCap: { "p1-arboriculture-tadla": "Carte d'occupation du sol et d'impact de la sécheresse, Tadla et Basse Tassaout (Geocarto International, 2025)", "p2-trees-dvr": "Réponse de la végétation à la sécheresse (DVR) en mois sur les sites visités (Science of Remote Sensing, 2026)", "p3-ipadi-doukkala": "IPADI 2015/16 - 2024/25, périmètre des Doukkala et bassin de l'AUEA", "p4-farmer-survey": "Enquête de terrain auprès des agriculteurs - UM6P, IWRI, CRSA, UQTR, ORMVAD, PCCI Québec, ABH Oum Er-Rbia" },
@@ -264,7 +264,7 @@ window.SITE = {
 
   // Skills orbit: ring 0 = innermost. Each entry: label, class (sat | prod | soft | meth), ring, size px
   skills: [
-    ["Sentinel-2", "sat", 0, 96], ["MODIS", "sat", 0, 84], ["Landsat", "sat", 0, 84],
+    ["Sentinel-2", "sat"], ["MODIS", "sat"], ["Landsat", "sat", 0, 84],
     ["Random Forest · XGBoost", "meth", 1, 98], ["LSTM · ProbLSTM", "meth", 1, 94], ["SHAP · XAI", "meth", 1, 90], ["Optuna", "meth", 1, 72],
     ["ERA5 / ERA5-Land", "prod", 2, 100], ["CHIRPS", "prod", 2, 80], ["TerraClimate", "prod", 2, 88], ["GloFAS", "prod", 2, 74],
     ["Google Earth Engine", "soft", 3, 104], ["Python", "soft", 3, 84], ["R", "soft", 3, 62], ["QGIS · ArcGIS", "soft", 3, 92], ["PostGIS", "soft", 3, 72]

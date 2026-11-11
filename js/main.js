@@ -128,21 +128,33 @@
     $("#stats").innerHTML = t.stats.map(([n, suf, l]) => `<div><span class="num" data-to="${n}" data-suffix="${suf}">0</span><span class="lbl">${esc(l)}</span></div>`).join("");
     $("#skillsTitle").textContent = t.skillsTitle;
     $("#skillsNote").textContent = t.skillsNote;
-    const rings = [{ r: 150, d: 36 }, { r: 232, d: 52 }, { r: 312, d: 70 }, { r: 388, d: 92 }];
-    const byRing = {}; S.skills.forEach((s) => { (byRing[s[2]] = byRing[s[2]] || []).push(s); });
-    const satIcon = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1"/><rect x="1" y="10" width="6" height="4"/><rect x="17" y="10" width="6" height="4"/><path d="M12 15v4M9 20h6"/></svg>';
-    let orbits = "";
-    Object.keys(byRing).forEach((k) => {
-      const ring = rings[k], items = byRing[k], n = items.length;
-      items.forEach(([label, cls, , size], i) => {
-        const delay = -(i / n) * ring.d;
-        orbits += `<div class="orbit" style="--d:${ring.d}s;--delay:${delay}s"><div class="sat-pos" style="--r:${ring.r}px"><div class="skill ${cls}" style="--s:${size}px;--d:${ring.d}s;--delay:${delay}s">${satIcon}<span>${esc(label)}</span></div></div></div>`;
+    // Skills map: one orbit per family. Ring gap > bubble size, so bubbles never overlap.
+    const CATS = ["sat", "meth", "prod", "soft"];
+    const RINGS = { sat: { r: 16.3, d: 60 }, meth: { r: 25.8, d: 85 }, prod: { r: 35.3, d: 110 }, soft: { r: 44.8, d: 140 } }; // r in % of the map width, d = seconds per turn
+    const byCat = {}; S.skills.forEach(([label, cat]) => { (byCat[cat] = byCat[cat] || []).push(label); });
+    let orbits = "", groups = "";
+    CATS.forEach((cat, c) => {
+      const ring = RINGS[cat], items = byCat[cat] || [], n = items.length, dir = c % 2 ? " rev" : "";
+      items.forEach((label, i) => {
+        const delay = -((i + c * 0.37) / n) * ring.d;
+        orbits += `<div class="orbit${dir}" style="--d:${ring.d}s;--delay:${delay}s"><div class="sat-pos" style="--r:${ring.r}cqw"><div class="skill ${cat}" data-skill="${esc(label)}" style="--d:${ring.d}s;--delay:${delay}s"><span>${esc(label)}</span></div></div></div>`;
       });
+      groups += `<div class="sk-group ${cat}" data-cat="${cat}" tabindex="0" role="group" aria-label="${esc(t.skillCats[cat])}"><h4><i></i>${esc(t.skillCats[cat])}<span>${n}</span></h4><ul>${items.map((l) => `<li data-skill="${esc(l)}">${esc(l)}</li>`).join("")}</ul></div>`;
     });
-    $("#skills").innerHTML = rings.map((rg) => `<div class="ring" style="--r:${rg.r}px"></div>`).join("") +
-      `<div class="globe" aria-hidden="true"><img src="images/earth.gif" alt="" width="329" height="318"></div><div class="globe-label">Earth Observation × AI</div>` + orbits;
-    const cols = ["var(--accent)", "var(--veg)", "var(--fg)", "var(--amber)"];
-    $("#legend").innerHTML = t.legend.map((l, i) => `<span class="mono"><span style="color:${cols[i]}">■</span> ${esc(l)}</span>`).join("");
+    $("#skills").innerHTML = `<div class="sk-stage"><div class="sk-map" aria-hidden="true">` +
+      CATS.map((cat) => `<div class="ring ${cat}" style="--r:${RINGS[cat].r}cqw"></div>`).join("") +
+      `<div class="globe"><img src="images/earth.gif" alt="" width="329" height="318"></div>` + orbits + `</div></div>` +
+      `<div class="sk-list"><p class="sk-eyebrow">Earth Observation × AI</p>${groups}</div>`;
+    const sk = $("#skills"), focus = (cat) => { if (cat) sk.dataset.focus = cat; else delete sk.dataset.focus; };
+    $$(".sk-group", sk).forEach((g) => {
+      g.addEventListener("pointerenter", () => focus(g.dataset.cat)); g.addEventListener("pointerleave", () => focus(""));
+      g.addEventListener("focus", () => focus(g.dataset.cat)); g.addEventListener("blur", () => focus(""));
+      g.addEventListener("click", () => focus(sk.dataset.focus === g.dataset.cat && !g.matches(":hover") ? "" : g.dataset.cat));
+    });
+    $$(".sk-list li", sk).forEach((li) => {
+      const b = $$(".skill", sk).find((x) => x.dataset.skill === li.dataset.skill);
+      li.addEventListener("pointerenter", () => b && b.classList.add("hot")); li.addEventListener("pointerleave", () => b && b.classList.remove("hot"));
+    });
     $("#expTitle").textContent = t.expTitle; $("#eduTitle").textContent = t.eduTitle;
     const li = (e) => `<li><h3>${esc(e.title)} <span>@ ${esc(e.org)}</span></h3><div class="meta">${esc(e.date)} · ${esc(e.place)}</div>${e.desc ? `<p>${esc(e.desc)}</p>` : ""}</li>`;
     $("#expList").innerHTML = S.experience[lang].map(li).join("");

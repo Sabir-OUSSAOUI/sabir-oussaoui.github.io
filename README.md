@@ -52,7 +52,7 @@ After editing `js/data.js`, `js/main.js` or `css/style.css`, bump the `?v=` numb
 ## Credits
 
 - Fonts: Montserrat, JetBrains Mono (Google Fonts, OFL).
-- Rotating Earth in the Skills section: `images/earth.gif`, supplied by the owner.
+- Skills section: `images/earth.gif` (supplied by the owner) at the centre, one orbit per family of tools (`skills` in `js/data.js`: name + family `sat`, `meth`, `prod` or `soft`), and the same tools as a list beside it. Sizes are relative to the map width, so bubbles never overlap; on phones the orbit shows dots and the list carries the names.
 - Portrait: supplied by the owner.
 - Project figures: `images/projects/`; publication figures: `images/publications/`.
 
