@@ -24,6 +24,8 @@
     linkedin: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.3 8h4.4v14H.3V8zm7.5 0h4.2v1.9h.1c.6-1.1 2-2.3 4.2-2.3 4.5 0 5.3 3 5.3 6.8V22h-4.4v-6.7c0-1.6 0-3.7-2.2-3.7s-2.6 1.7-2.6 3.6V22H7.8V8z"/></svg>',
     scholar: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>',
     rg: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 20V6h5a3 3 0 010 6H8"/><path d="M11 12l4 8"/><path d="M17 4h3M18.5 2.5v3"/></svg>',
+    github: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.560 9.560 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>',
+    youtube: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.500 2.500 0 0 0-1.76-1.77C18.280 5 12 5 12 5s-6.280 0-7.840.43A2.500 2.500 0 0 0 2.400 7.200 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.800 2.500 2.500 0 0 0 1.760 1.770C5.720 19 12 19 12 19s6.280 0 7.840-.43a2.500 2.500 0 0 0 1.760-1.770A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.800zM10 15V9l5.200 3-5.200 3z"/></svg>',
     mail: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>',
     sun: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
     moon: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>'
@@ -41,6 +43,8 @@
     const socials = `<a class="soc" href="${S.links.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>
       <a class="soc" href="${S.links.scholar}" target="_blank" rel="noopener" aria-label="Google Scholar">${ICONS.scholar}</a>
       <a class="soc" href="${S.links.researchgate}" target="_blank" rel="noopener" aria-label="ResearchGate">${ICONS.rg}</a>
+      <a class="soc" href="${S.links.github}" target="_blank" rel="noopener" aria-label="GitHub">${ICONS.github}</a>
+      <a class="soc" href="${S.links.youtube}" target="_blank" rel="noopener" aria-label="YouTube">${ICONS.youtube}</a>
       <a class="soc" href="${outlook()}" target="_blank" rel="noopener" aria-label="Email via Outlook">${ICONS.mail}</a>
       <button class="lang" id="langBtn" aria-label="Switch language">${lang === "en" ? "FR" : "EN"}</button>
       <button class="theme" id="themeBtn" aria-label="Toggle dark mode"></button>`;
@@ -331,7 +335,9 @@
       <div class="ct-block"><h4>${hash}${esc(t.ctSocial)}</h4><div class="ct-social">
         <a href="${S.links.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn">${ICONS.linkedin}</a>
         <a href="${S.links.scholar}" target="_blank" rel="noopener" aria-label="Google Scholar">${ICONS.scholar}</a>
-        <a href="${S.links.researchgate}" target="_blank" rel="noopener" aria-label="ResearchGate">${ICONS.rg}</a></div></div>
+        <a href="${S.links.researchgate}" target="_blank" rel="noopener" aria-label="ResearchGate">${ICONS.rg}</a>
+        <a href="${S.links.github}" target="_blank" rel="noopener" aria-label="GitHub">${ICONS.github}</a>
+        <a href="${S.links.youtube}" target="_blank" rel="noopener" aria-label="YouTube">${ICONS.youtube}</a></div></div>
       <a class="btn cv-req" href="${cvMail()}">${ICONS.mail}<span>${esc(t.ctCv)}</span></a>`;
     const f = (id, label, ph, type, req) => `<label class="ct-field" for="${id}"><span>${esc(label)}${req ? ' <i aria-hidden="true">*</i>' : ""}</span>${type === "textarea" ? `<textarea id="${id}" name="${id}" rows="6" placeholder="${esc(ph)}"${req ? " required" : ""}></textarea>` : `<input id="${id}" name="${id}" type="${type}" placeholder="${esc(ph)}"${req ? " required" : ""}${type === "email" ? ' autocomplete="email"' : ""}>`}</label>`;
     $("#ctForm").innerHTML = `

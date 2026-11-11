@@ -9,7 +9,9 @@ window.SITE = {
   links: {
     linkedin: "https://www.linkedin.com/in/sabir-oussaoui/",
     scholar: "https://scholar.google.com/citations?user=mRgV_v4AAAAJ&hl=en",
-    researchgate: "https://www.researchgate.net/profile/Sabir-Oussaoui"
+    researchgate: "https://www.researchgate.net/profile/Sabir-Oussaoui",
+    github: "https://github.com/Sabir-OUSSAOUI",
+    youtube: "https://www.youtube.com/@s.oussaoui1524"
   },
   // Contact form delivery through Web3Forms (free key from web3forms.com, tied to the Gmail below).
   // If the service fails, the visitor gets a link that opens their email app with the message filled in.
