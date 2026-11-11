@@ -51,7 +51,7 @@
     $("#header").innerHTML = `
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav-links">${linkHtml}</nav>
-      <a class="logo" href="index.html" aria-label="Home"><img src="images/profile/avatar.png" alt="" width="48" height="48"><span>Sabir OUSSAOUI</span></a>
+      <a class="logo" href="index.html" aria-label="Home"><img src="images/profile/avatar.png?v=202611102128" alt="" width="48" height="48"><span>Sabir OUSSAOUI</span></a>
       <div class="socials">${socials}</div>`;
     let menu = $("#mobileMenu"); if (!menu) { menu = document.createElement("div"); menu.className = "mobile-menu"; menu.id = "mobileMenu"; document.body.appendChild(menu); }
     menu.innerHTML = `<button class="menu-close" id="menuClose" aria-label="Close menu">&times;</button>${linkHtml}<div class="socials" style="display:flex">${socials.replace(/id="(langBtn|themeBtn)"/g, 'data-m="$1"')}</div>`;
@@ -328,7 +328,7 @@
     const uni = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c3 2 7 2 10 0v-5"/></svg>';
     const hash = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 9h16M4 15h16M10 3L8 21M16 3l-2 18"/></svg>';
     $("#ctInfo").innerHTML = `
-      <div class="ct-brand"><img src="images/profile/avatar.png" alt="" width="56" height="56"><div><b>Sabir OUSSAOUI</b><span>${lang === "fr" ? "Doctorant · Télédétection, IA et sécheresse" : "PhD Researcher · Remote sensing, AI & drought"}</span></div></div>
+      <div class="ct-brand"><img src="images/profile/avatar.png?v=202611102128" alt="" width="56" height="56"><div><b>Sabir OUSSAOUI</b><span>${lang === "fr" ? "Doctorant · Télédétection, IA et sécheresse" : "PhD Researcher · Remote sensing, AI & drought"}</span></div></div>
       <div class="ct-block"><h4>${uni}${esc(t.ctOffice)}</h4><p>UM6P - International Water Research Institute (IWRI)<br>Ben Guerir, Morocco</p><p>UQTR - Centre de recherche RIVE<br>Trois-Rivières, Québec, Canada</p></div>
       <div class="ct-block"><h4>${ICONS.mail}${esc(t.ctEmail)}</h4><p><a href="mailto:${esc(S.email)}">${esc(S.email)}</a></p></div>
       <div class="ct-block"><h4>${pin}${esc(t.ctLocation)}</h4><p>${esc(t.ctLocVal)}</p></div>
