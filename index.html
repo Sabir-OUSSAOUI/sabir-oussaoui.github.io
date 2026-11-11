@@ -29,33 +29,35 @@
 <main class="wrap">
   <section class="hero" style="padding-top:0">
     <div class="hero-img">
-      <img src="images/profile/hero-iahr.jpg" alt="Sabir Oussaoui speaking at the 6th IAHR Africa Congress, UM6P" width="1600" height="1600" fetchpriority="high">
+      <figure>
+        <img src="images/profile/hero-iahr.jpg" alt="Sabir Oussaoui speaking at the 6th IAHR Africa Congress, UM6P" width="1600" height="1600" fetchpriority="high">
+        <figcaption id="heroCap"></figcaption>
+        <!-- rotating "Let's talk" badge on the corner of the photo -->
+        <div class="hireme">
+          <svg class="ring" viewBox="0 0 160 160" aria-hidden="true">
+            <defs><path id="circ" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs>
+            <text font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.6"><textPath href="#circ" id="ringText">Open to collaboration · drought · water · EO · </textPath></text>
+          </svg>
+          <a href="https://outlook.office.com/mail/deeplink/compose?to=sabir.oussaoui@um6p.ma&amp;subject=Collaboration%20-%20drought%20%26%20Earth%20observation" target="_blank" rel="noopener" id="hireLabel" aria-label="Write to Sabir Oussaoui in Outlook">Let's talk</a>
+        </div>
+      </figure>
     </div>
     <div class="hero-txt">
+      <p class="hero-eyebrow" id="heroEyebrow"></p>
       <h1 id="heroTitle"></h1>
       <p id="heroSub"></p>
-      <div class="hero-aff">
-        <span>Mohammed VI Polytechnic University - International Water Research Institute (UM6P-IWRI), Morocco</span>
-        <span>Université du Québec à Trois-Rivières - Centre de recherche sur les interactions bassins versants - écosystèmes aquatiques (RIVE), Canada</span>
-        <span class="mono" id="heroCot" style="font-size:11px;margin-top:4px"></span>
-      </div>
+      <div class="hero-aff" id="heroAff"></div>
+      <p class="hero-thesis" id="heroCot"></p>
       <div class="hero-cta">
         <a class="btn" id="ctaResearch" href="about.html"></a>
         <a class="btn ghost" id="ctaPubs" href="publications.html"></a>
         <a class="link" id="cvLink"></a>
       </div>
     </div>
+    <div class="hero-stats" id="heroStats"></div>
   </section>
 </main>
 
-<!-- rotating badge, like the template's "Hire me" -->
-<div class="hireme">
-  <svg class="ring" viewBox="0 0 160 160" aria-hidden="true">
-    <defs><path id="circ" d="M80,80 m-62,0 a62,62 0 1,1 124,0 a62,62 0 1,1 -124,0"/></defs>
-    <text font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.6"><textPath href="#circ" id="ringText">Open to collaboration · drought · water · EO · </textPath></text>
-  </svg>
-  <a href="https://outlook.office.com/mail/deeplink/compose?to=sabir.oussaoui@um6p.ma&amp;subject=Collaboration%20-%20drought%20%26%20Earth%20observation" target="_blank" rel="noopener" id="hireLabel" aria-label="Write to Sabir Oussaoui in Outlook">Let's talk</a>
-</div>
 <footer id="footer"></footer>
 <script src="js/data.js?v="></script>
 <script src="js/main.js?v="></script>

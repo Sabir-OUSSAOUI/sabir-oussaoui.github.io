@@ -108,9 +108,15 @@
   /* ---- page renderers ---- */
   function renderHome() {
     const t = T();
+    $("#heroEyebrow").innerHTML = `<i></i>${esc(t.heroEyebrow)}`;
     animateText($("#heroTitle"), t.heroTitle);
+    $$("#heroTitle .anim-word").slice(-t.heroHl).forEach((w) => w.classList.add("hl")); // accent on the last words
     $("#heroSub").innerHTML = t.heroSub; // trusted string from data.js; contains <b>
-    $("#heroCot").textContent = t.cotutelle;
+    $("#heroCap").textContent = t.heroCap;
+    $("#heroAff").innerHTML = t.heroAff.map(([n, l, pl]) => `<div class="aff"><b>${esc(n)}</b><span>${esc(l)}</span><span class="mono">${esc(pl)}</span></div>`).join("");
+    $("#heroCot").innerHTML = `<span class="mono">${esc(t.heroThesis[0])}</span><i>${esc(t.heroThesis[1])}</i>`;
+    const stats = [[S.publications.filter((p) => p.s === "pub").length, "publications.html"], [S.supervision.length, "about.html"], ["200+", "about.html"], [S.events.length, "events.html"]];
+    $("#heroStats").innerHTML = stats.map(([n, href], i) => `<a class="hstat" href="${href}"><b>${n}</b><span>${esc(t.heroStats[i])}</span></a>`).join("");
     $("#ctaResearch").textContent = t.ctaResearch;
     $("#ctaPubs").textContent = t.ctaPubs;
     const cv = $("#cvLink");
@@ -386,10 +392,7 @@
       if (push) history.pushState({ soft: true }, "", url);
       document.title = doc.title;
       document.body.dataset.page = page = nextPage;
-      $$(".hireme").forEach((n) => n.remove());
-      const hire = doc.querySelector(".hireme");
       main.replaceWith(next);
-      if (hire) next.after(hire);
       if ($("#lightbox").classList.contains("open")) closeLightbox();
       document.body.style.overflow = "";
       window.scrollTo(0, 0);

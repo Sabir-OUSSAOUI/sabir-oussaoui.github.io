@@ -19,7 +19,7 @@ Deployed with GitHub Pages from the `main` branch of this repository (`sabir-ous
 
 | File | Content |
 | --- | --- |
-| `index.html` | Hero (portrait + animated headline), rotating "Let's talk" badge |
+| `index.html` | Home: photo with caption and "Let's talk" badge, title, affiliation cards, thesis, calls to action and a strip of four key figures counted from `js/data.js` |
 | `about.html` | Biography, counters, circular skills map, Experience & Education timelines with scroll rail, teaching & awards |
 | `projects.html` | Featured case study + grid (P1-P4) |
 | `publications.html` | Published and accepted papers with status / theme / year filters, graphical abstracts, featured papers, conferences list |
