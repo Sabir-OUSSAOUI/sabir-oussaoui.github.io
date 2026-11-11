@@ -83,7 +83,7 @@ window.SITE = {
       lbl: { q: "Question", area: "Zone d'étude", data: "Données", approach: "Approche", contrib: "Contribution", out: "Résultat" },
       pubTitle: "Publications", pubLede: "Articles parus et acceptés. DOI affichés lorsqu'ils sont disponibles.",
       fStatus: "Statut", fTheme: "Thème", fYear: "Année", all: "Tous", entries: "entrées",
-      statuses: { pub: "Paru", accepted: "Accepté", acc: "Accepté avec révisions", rev: "En évaluation" },
+      statuses: { pub: "Publié", accepted: "Accepté", acc: "Accepté avec révisions", rev: "En évaluation" },
       themes: { agri: "Sécheresse agricole", hydro: "Prévision hydroclimatique", xai: "IA explicable & EO", socio: "Impacts socioéconomiques" },
       talksTitle: "Conférences et communications",
       kinds: { oral: "Oral", poster: "Affiche", coauth: "Co-auteur" },
